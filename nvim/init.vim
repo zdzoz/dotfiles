@@ -7,6 +7,8 @@ set tabstop=4
 set shiftwidth=4
 set number
 set relativenumber
+set laststatus=2
+set noshowmode
 set nowrap
 set ignorecase
 set smartcase
@@ -68,7 +70,41 @@ inoremap ;; <esc>A;<esc>
 inoremap ,, <esc>A,<esc>
 
 " Open file under cursor in vertical split
-nnoremap <c-w>f <c-w>vgf
+nnoremap gv <c-w>vgf
+
+nnoremap <leader>S :Startify<cr>
+
+" window navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+
+" Toggle maximize vsplit-view
+nnoremap <silent><expr> <leader>m <SID>maximizeToggle()
+function! s:maximizeToggle()
+    if exists("s:maximize_toggle")
+        unlet s:maximize_toggle
+        return "\<c-w>="
+    else
+        let s:maximize_toggle = ""
+        return "\<c-w>|\<c-w>_"
+    endif
+endfunction
+
+" Automatically create non-existing folders
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 " ---------------
 " --- Plugins ---
@@ -89,7 +125,9 @@ source ~/.config/nvim/plugins/dracula.vim
 source ~/.config/nvim/plugins/startify.vim
 source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/eunuch.vim
 source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/lightline.vim
 
 call plug#end()
 doautocmd User PlugLoaded
