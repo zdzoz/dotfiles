@@ -4,6 +4,7 @@ Plug 'mhinz/vim-startify'
 " Startify
 let g:startify_custom_header = ''
 let g:startify_bookmarks = [ {'z': '~/.zshrc'},
+      \ {'t': '~/.tmux.conf'},
       \ {'v': '~/.config/nvim/init.vim'},
       \ {'c': '~/.config/nvim/coc-settings.json'} ]
 
