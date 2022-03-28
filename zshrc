@@ -1,39 +1,58 @@
+################################################################################
+# Plugins
+################################################################################
+
+# Load the Antibody plugin manager for zsh.
+source <(antibody init)
+
+# Setup required env var for oh-my-zsh plugins
+export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+antibody bundle robbyrussell/oh-my-zsh
+antibody bundle robbyrussell/oh-my-zsh path:plugins/git
+antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
+antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
+
+
+antibody bundle zsh-users/zsh-autosuggestions
+
+# This needs to be the last bundle.
+antibody bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antibody bundle spaceship-prompt/spaceship-prompt
+
+
+################################################################################
+# Configuration
+################################################################################
+
 # start tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/zdziarski/.oh-my-zsh"
+export LANG=en_US.UTF-8
 
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="refined"
-ZSH_THEME="spaceship"
-
-plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
-
-source $ZSH/oh-my-zsh.sh 
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
+export BAT_THEME="Dracula"
 
 
-# My shortcuts
-alias proj="cd ~/Documents/Projects"
-alias work="cd ~/Documents/Work"
+################################################################################
+# Shortcuts
+################################################################################
 
 alias vim="nvim"
-alias v="volta"
+alias cat="bat"
+
+alias proj="cd ~/Documents/Projects"
+alias work="cd ~/Documents/Work"
 
 alias rpi1="ssh ubuntu@zdzoz.duckdns.org -p 2001"
 alias rpi2="ssh ubuntu@zdzoz.duckdns.org -p 2002"
 alias rpi3="ssh ubuntu@zdzoz.duckdns.org -p 2003"
 
-# Force UTF-8
-export LANG=en_US.UTF-8
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
-
-export BAT_THEME="Dracula"
 
 # tabtab source for packages
 # uninstall by removing these lines
