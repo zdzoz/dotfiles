@@ -4,16 +4,16 @@
 
 - link:
     ~/.gitconfig: gitconfig
-    ~/.gitignore-work: gitignore-work
+    ~/.gitconfig-work: gitconfig-work
     ~/.tmux: tmux
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim: nvim
     ~/.zshrc: zshrc
 
 - create:
-  ~/Documents
-  ~/Documents/Projects
-  ~/Documents/Work
+    - ~/Documents
+    - ~/Documents/Projects
+    - ~/Documents/Work
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
