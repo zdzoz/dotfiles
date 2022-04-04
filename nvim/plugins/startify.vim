@@ -3,6 +3,10 @@ Plug 'mhinz/vim-startify'
 
 " Startify
 let g:startify_custom_header = ''
+
+" Prevent startify from changing directories
+let g:startify_change_to_dir = 0
+
 let g:startify_bookmarks = [ {'z': '~/.zshrc'},
       \ {'t': '~/.tmux.conf'},
       \ {'v': '~/.config/nvim/init.vim'},

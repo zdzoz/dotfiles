@@ -55,6 +55,14 @@ vnoremap < <gv
 vnoremap y myy`y
 vnoremap Y myY`y
 
+" delete without yanking
+nnoremap <leader>d d
+nnoremap d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register without yanking it
+vnoremap <leader>p "_dP
+
 " Maintain cursor position when joining
 nnoremap J mzJ`z
 
