@@ -29,7 +29,7 @@ antibody bundle spaceship-prompt/spaceship-prompt
 
 # start tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+  exec tmux new -As0
 fi
 
 export LANG=en_US.UTF-8
