@@ -1,0 +1,21 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[user]
+	name = Oskar Zdziarski
+	email = oskarzdz@gmail.com
+	signingKey = ""
+[includeIf "gitdir:~/Documents/Work/"]
+	path = ~/.gitconfig-work
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false

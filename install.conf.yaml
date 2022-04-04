@@ -1,0 +1,21 @@
+- clean: [
+    '~',
+]
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.gitignore-work: gitignore-work
+    ~/.tmux: tmux
+    ~/.tmux.conf: tmux.conf
+    ~/.config/nvim: nvim
+    ~/.zshrc: zshrc
+
+- create:
+  ~/Documents
+  ~/Documents/Projects
+  ~/Documents/Work
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
+    - ["vim +PlugUpdate +PlugClean! +qa", Installing and updating plugins]
