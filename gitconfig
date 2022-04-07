@@ -19,3 +19,5 @@
 	gpgSign = false
 [tag]
 	forceSignAnnotated = false
+[core]
+	editor = vi
