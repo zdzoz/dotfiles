@@ -27,9 +27,26 @@ antibody bundle spaceship-prompt/spaceship-prompt
 # Configuration
 ################################################################################
 
+openTmux() {
+  declare -A sessions
+  sessions=($(tmux ls -F "#{session_name} #{session_attached}"))
+  for session attached in ${(kv)sessions};
+  do
+      if [[ $attached -eq 0 ]]; then
+          SES=$session
+          break
+      fi
+  done
+  if [[ -v SES ]]; then
+      exec tmux new -A -s $SES
+  else
+      exec tmux
+  fi
+}
+
 # start tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux new -As0
+  openTmux
 fi
 
 export LANG=en_US.UTF-8
