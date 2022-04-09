@@ -69,6 +69,8 @@ alias rpi1="ssh ubuntu@zdzoz.duckdns.org -p 2001"
 alias rpi2="ssh ubuntu@zdzoz.duckdns.org -p 2002"
 alias rpi3="ssh ubuntu@zdzoz.duckdns.org -p 2003"
 
+alias cm="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+
 
 
 # tabtab source for packages
