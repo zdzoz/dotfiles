@@ -1,0 +1,29 @@
+theme = "Dracula"
+
+[editor]
+scrolloff = 8
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+
+######################
+#0 Keymaps 
+######################
+
+[keys.normal]
+H = 'goto_line_start'
+L = 'goto_first_nonwhitespace'
+y = 'yank_joined_to_clipboard'
+Y = 'yank_main_selection_to_clipboard'
+p = 'paste_clipboard_after'
+P = 'paste_clipboard_before'
+R = 'replace_selections_with_clipboard'
+d = ['yank_joined_to_clipboard', 'delete_selection_noyank']
+
+[keys.insert]
+
+[keys.select]
+H = 'goto_line_start'
+L = 'goto_line_end'
