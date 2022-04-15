@@ -12,7 +12,7 @@ set noshowmode
 set nowrap
 set ignorecase
 set smartcase
-set signcolumn=number
+set signcolumn=yes:2
 set title
 set spell
 set mouse=a
