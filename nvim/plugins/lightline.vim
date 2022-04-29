@@ -11,10 +11,15 @@ let g:lightline = {
       \              [ 'indentation', 'fileformat', 'fileencoding' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'gitbranch#name',
+      \   'filename': 'LightlineFilename'
       \ },
       \ 'component': {
       \   'indentation': 'spaces: %{&shiftwidth}'
       \ },
       \ }
 "     \             [ 'gitbranch' ],
+" Relative filepath
+function! LightlineFilename()
+  return expand('%')
+endfunction
