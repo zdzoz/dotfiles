@@ -1,8 +1,10 @@
 [alias]
 	co = checkout
 	br = branch
-	ci = commit
+	c = commit
 	st = status
+	ca = commit -am
+	cm = commit -m
 [user]
 	name = Oskar Zdziarski
 	email = oskarzdz@gmail.com
