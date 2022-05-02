@@ -5,6 +5,7 @@
 	c = commit
 	cm = commit -m
 	cam = commit -am
+	l = log --graph --oneline
 [user]
 	name = Oskar Zdziarski
 	email = oskarzdz@gmail.com
