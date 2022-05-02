@@ -51,6 +51,9 @@ fi
 
 export LANG=en_US.UTF-8
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 export BAT_THEME="Dracula"
 
@@ -70,12 +73,6 @@ alias rpi1="ssh ubuntu@zdzoz.duckdns.org -p 2001"
 alias rpi2="ssh ubuntu@zdzoz.duckdns.org -p 2002"
 alias rpi3="ssh ubuntu@zdzoz.duckdns.org -p 2003"
 
-alias cm="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
-
-
-
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"

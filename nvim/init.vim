@@ -56,8 +56,7 @@ vnoremap y myy`y
 vnoremap Y myY`y
 
 " delete without yanking
-nnoremap <leader>d d
-nnoremap d "_d
+nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
 " replace currently selected text with default register without yanking it
@@ -70,15 +69,17 @@ nnoremap J mzJ`z
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-nnoremap H 0
+nnoremap H ^
 nnoremap L $
+vnoremap H ^
+vnoremap L $
 nnoremap <esc> :nohlsearch<cr>
 
 inoremap ;; <esc>A;<esc>
 inoremap ,, <esc>A,<esc>
 
 " Open file under cursor in vertical split
-nnoremap gv <c-w>vgf
+nnoremap gv <c-w>v:edit <cfile><cr>
 
 nnoremap <leader>S :Startify<cr>
 
@@ -133,6 +134,7 @@ source ~/.config/nvim/plugins/dracula.vim
 source ~/.config/nvim/plugins/startify.vim
 source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/eunuch.vim
 source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/lightline.vim
