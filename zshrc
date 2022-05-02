@@ -63,8 +63,10 @@ export BAT_THEME="Dracula"
 ################################################################################
 
 alias vim="nvim"
-alias vol="volta"
 alias cat="bat"
+
+alias vol="volta"
+alias pm="pnpm"
 
 alias proj="cd ~/Documents/Projects"
 alias work="cd ~/Documents/Work"
