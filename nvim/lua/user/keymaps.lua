@@ -58,3 +58,7 @@ imap('<A-j>', '<Esc>:move .+1<CR>==gi')
 imap('<A-k>', '<Esc>:move .-2<CR>==gi')
 keymap('x', '<A-j>', ":move '>+1<CR>gv-gv")
 keymap('x', '<A-k>', ":move '<-2<CR>gv-gv")
+
+-- ctrl-s for save
+nmap('<c-s>', ':w<cr>')
+imap('<c-s>', '<esc>:w<cr>a')
