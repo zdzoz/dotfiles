@@ -42,12 +42,6 @@ imap('{{', '<esc>A{')
 
 nmap('<leader>s', ':Startify<cr>')
 
--- Window navigation
-nmap('<c-h>', '<c-w>h')
-nmap('<c-l>', '<c-w>l')
-nmap('<c-k>', '<c-w>k')
-nmap('<c-j>', '<c-w>j')
-
 -- Disable annoying command line thing
 nmap('q:', ':q<CR>')
 
