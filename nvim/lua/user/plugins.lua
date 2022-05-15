@@ -1,4 +1,4 @@
-local packer = require 'lib.packer-init'
+local packer, packer_bootstrap = require 'lib.packer-init'
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim' -- Let Packer manage itself
@@ -27,6 +27,34 @@ packer.startup(function(use)
       require('user.plugins.nvim-tree')
     end
   }
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      { 'kyazdani42/nvim-web-devicons' },
+      {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'},
+    },
+    config = function()
+      require('user.plugins.telescope')
+    end
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('user.plugins.treesitter')
+    end
+  }
+
+  -- TODO configure LSP
+  -- TODO gitsigns
+  -- TODO vim fugitive?
+  -- TODO floatterm?
+  -- TODO lightline
+  -- TODO indent-blankline (rainbow)
+  -- TODO nvim-dap
 
   if packer_bootstrap then
     packer.sync()
