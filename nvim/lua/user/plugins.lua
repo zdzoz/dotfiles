@@ -49,12 +49,12 @@ packer.startup(function(use)
   }
 
   -- TODO configure LSP
-  -- TODO gitsigns
-  -- TODO vim fugitive?
+  -- TODO nvim-dap
   -- TODO floatterm?
   -- TODO lightline
   -- TODO indent-blankline (rainbow)
-  -- TODO nvim-dap
+  -- TODO gitsigns
+  -- TODO vim fugitive?
 
   if packer_bootstrap then
     packer.sync()
