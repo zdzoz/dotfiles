@@ -7,6 +7,7 @@ end
 local packer = require 'packer'
 
 packer.init {
+  ensure_dependencies = true,
   display = {
     open_fn = function()
       return require('packer.util').float { border = 'rounded' }
