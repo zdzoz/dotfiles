@@ -75,14 +75,20 @@ packer.startup(function(use)
     end
   }
 
-  -- TODO dashboard
+  use {
+      'goolord/alpha-nvim',
+      config = function ()
+        require('user.plugins.alpha')
+      end
+  }
+
+  -- TODO nvim-cmp
   -- TODO nvim-autopairs
   -- TODO configure LSP
   -- TODO lsp_signature
   -- TODO lspkind
   -- TODO nvim-dap
   -- TODO lightline or feline
-  -- TODO nvim-cmp
   -- TODO indent-blankline (rainbow)
   -- TODO floatterm
 
