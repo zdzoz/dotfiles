@@ -26,4 +26,5 @@ vim.o.backup = true
 vim.o.backupdir = vim.fn.stdpath 'data' .. '/backup//'
 vim.o.updatetime = 250
 vim.o.redrawtime = 1000
+vim.o.timeoutlen = 250
 vim.o.fillchars = 'eob: '

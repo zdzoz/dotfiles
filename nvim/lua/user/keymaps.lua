@@ -7,9 +7,6 @@ imap('kj', '<esc>')
 
 keymap('n', '<leader>Q', ':bufdo bdelete<CR>')
 
--- spellcheck suggestions
-nmap('<leader>S', 'i<c-x>s<c-p>')
-
 -- Allow gf to open non-existent files
 keymap('', 'gf', ':edit <cfile><CR>')
 
@@ -35,23 +32,23 @@ nmap('<esc>', ':nohlsearch<cr>')
 
 nmap('H', '^')
 nmap('L', '$')
+vmap('H', '^')
+vmap('L', '$')
 
-imap(';;', '<esc>A;<esc>')
-imap(',,', '<esc>A,<esc>')
-imap('{{', '<esc>A{')
+imap(';;', '<esc>a;<esc>')
+imap(',,', '<esc>a,<esc>')
+imap('{{', '<esc>a{')
 
-nmap('<leader>s', ':Startify<cr>')
+-- disable annoying command line thing
+nmap('q:', ':q<cr>')
 
--- Disable annoying command line thing
-nmap('q:', ':q<CR>')
-
--- Move text up and down
-nmap('<A-j>', ':move .+1<CR>==')
-nmap('<A-k>', ':move .-2<CR>==')
-imap('<A-j>', '<Esc>:move .+1<CR>==gi')
-imap('<A-k>', '<Esc>:move .-2<CR>==gi')
-keymap('x', '<A-j>', ":move '>+1<CR>gv-gv")
-keymap('x', '<A-k>', ":move '<-2<CR>gv-gv")
+-- move text up and down
+nmap('<a-j>', ':move .+1<cr>==')
+nmap('<a-k>', ':move .-2<cr>==')
+imap('<a-j>', '<esc>:move .+1<cr>==gi')
+imap('<a-k>', '<esc>:move .-2<cr>==gi')
+keymap('x', '<a-j>', ":move '>+1<cr>gv-gv")
+keymap('x', '<a-k>', ":move '<-2<cr>gv-gv")
 
 -- ctrl-s for save
 nmap('<c-s>', ':w<cr>')

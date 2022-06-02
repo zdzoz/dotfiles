@@ -6,6 +6,7 @@ packer.startup(function(use)
   use 'christoomey/vim-tmux-navigator'
   use 'airblade/vim-rooter'
   use 'farmergreg/vim-lastplace'
+  use 'andymass/vim-matchup'
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
@@ -48,13 +49,50 @@ packer.startup(function(use)
     end
   }
 
+  use {
+    'max397574/better-escape.nvim',
+    config = function()
+      require("better_escape").setup {
+        mapping = {"kj"},
+        timeout = vim.o.timeoutlen,
+        clear_empty_lines = false,
+        keys = "<esc>",
+      }
+    end,
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('user.plugins.gitsigns')
+    end,
+  }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require('user.plugins.whichkey')
+    end
+  }
+
+  -- TODO dashboard
+  -- TODO nvim-autopairs
   -- TODO configure LSP
+  -- TODO lsp_signature
+  -- TODO lspkind
   -- TODO nvim-dap
-  -- TODO floatterm?
-  -- TODO lightline
+  -- TODO lightline or feline
+  -- TODO nvim-cmp
   -- TODO indent-blankline (rainbow)
-  -- TODO gitsigns
-  -- TODO vim fugitive?
+  -- TODO floatterm
+
+  -- TODO fix coloring for:
+  -- whichkey
+
+  -- LATER
+  -- vim fugitive?
+  -- colorizer
+  -- bufferline
 
   if packer_bootstrap then
     packer.sync()
