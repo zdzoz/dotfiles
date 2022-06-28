@@ -6,6 +6,7 @@
 	cm = commit -m
 	cam = commit -am
 	l = log --graph --oneline
+	last = checkout @{-1}
 [user]
 	name = Oskar Zdziarski
 	email = oskarzdz@gmail.com
