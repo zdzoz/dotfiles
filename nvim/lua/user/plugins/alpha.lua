@@ -13,6 +13,7 @@ dashboard.section.buttons.val = {
    dashboard.button( "p", "Open nvim plugins" , ":e ~/.config/nvim/lua/user/plugins.lua<cr>"),
    dashboard.button( "z", "Open zshrc" , ":e ~/.zshrc<cr>"),
    dashboard.button( "t", "Open tmux.conf" , ":e ~/.tmux.conf<cr>"),
+   dashboard.button( "s", "痢 Sync Plugins" , ":PackerSync<cr>"),
    dashboard.button( "q", "  Quit" , ":qa<CR>"),
 }
 

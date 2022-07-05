@@ -33,3 +33,4 @@ keymap('n', '<leader>r', [[<cmd>lua require('telescope.builtin').live_grep()<CR>
 keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
 keymap('n', '<leader>h', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
 keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]])
+keymap('n', '<leader>/', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]])
