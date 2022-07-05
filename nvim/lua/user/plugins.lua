@@ -69,7 +69,7 @@ packer.startup(function(use)
   }
 
   use {
-    "folke/which-key.nvim",
+    'folke/which-key.nvim',
     config = function()
       require('user.plugins.whichkey')
     end
@@ -77,9 +77,16 @@ packer.startup(function(use)
 
   use {
       'goolord/alpha-nvim',
-      config = function ()
+      config = function()
         require('user.plugins.alpha')
       end
+  }
+
+  use {
+    'easymotion/vim-easymotion',
+    config = function()
+      require('user.plugins.easymotion')
+    end
   }
 
   -- TODO nvim-cmp
@@ -88,6 +95,7 @@ packer.startup(function(use)
   -- TODO lsp_signature
   -- TODO lspkind
   -- TODO nvim-dap
+  -- TODO vim-trouble
   -- TODO lightline or feline
   -- TODO indent-blankline (rainbow)
   -- TODO floatterm

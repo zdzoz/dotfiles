@@ -7,6 +7,7 @@ require("which-key").setup {
 local wk = require('which-key')
 
 wk.register({
+  ['<space>'] = 'Motion',
   f = 'Find Files',
   F = 'All Files',
   r = 'Search',
