@@ -1,11 +1,30 @@
 local keymap, nmap, imap, vmap = require 'lib.utils'.keymap, require 'lib.utils'.nmap, require 'lib.utils'.imap, require 'lib.utils'.vmap
 local actions = require 'telescope.actions'
 
-
 require('telescope').setup {
   defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+    },
     path_display = { truncate = 1 },
+    prompt_prefix = "  ",
+    selection_caret = "  ",
+    entry_prefix = "  ",
     sorting_strategy = 'ascending',
+    layout_strategy = 'horizontal',
+    layout_config = {
+      prompt_position = 'top',
+    },
+    winblend = 0,
+    border = {},
+    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+    color_devicons = true,
     mappings = {
       i = {
         ['<esc>'] = actions.close,
@@ -13,7 +32,7 @@ require('telescope').setup {
         ['<c-up>'] = actions.cycle_history_prev,
       },
     },
-    file_ignore_patterns = { '.git/' },
+    file_ignore_patterns = { '.git/', 'node_modules' },
   },
   pickers = {
     find_files = {
@@ -34,3 +53,5 @@ keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]]
 keymap('n', '<leader>h', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
 keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]])
 keymap('n', '<leader>/', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]])
+
+vim.cmd('hi TelescopeTitle guibg=#4154e8')

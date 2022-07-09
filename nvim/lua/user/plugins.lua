@@ -18,6 +18,12 @@ packer.startup(function(use)
     rtp = 'vim',
     config = function()
       vim.cmd([[ colorscheme onehalfdark ]])
+      local normal_fg = vim.api.nvim_get_hl_by_name('Normal', true).foreground
+      local linenr_fg = vim.api.nvim_get_hl_by_name('LineNr', true).foreground
+      vim.api.nvim_set_hl(0, 'Normal', { bg='#282a36' })
+      vim.api.nvim_set_hl(0, 'Normal', { fg=normal_fg })
+      vim.api.nvim_set_hl(0, 'LineNr', { bg='#282a36' })
+      vim.api.nvim_set_hl(0, 'LineNr', { fg=linenr_fg })
     end
   }
 
@@ -86,6 +92,13 @@ packer.startup(function(use)
     'easymotion/vim-easymotion',
     config = function()
       require('user.plugins.easymotion')
+    end
+  }
+
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
     end
   }
 
