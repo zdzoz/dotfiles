@@ -5,11 +5,12 @@
 - link:
     ~/.gitconfig: gitconfig
     ~/.gitconfig-work: gitconfig-work
+    ~/.gitconfig-school: gitconfig-school
     ~/.tmux: tmux
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim: nvim
-    ~/.config/helix: helix
     ~/.zshrc: zshrc
+    ~/.zsh_plugins.txt: zsh_plugins.txt
 
 - create:
     - ~/Documents
@@ -19,4 +20,3 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
-    - ["vim +PlugUpdate +PlugClean! +qa", Installing and updating plugins]

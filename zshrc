@@ -1,27 +1,17 @@
+if [[ $(uname) == "Darwin" ]]; then
+if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+fi
+
 ################################################################################
 # Plugins
 ################################################################################
 
-# Load the Antibody plugin manager for zsh.
-source <(antibody init)
-
-# Setup required env var for oh-my-zsh plugins
-export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-
-antibody bundle robbyrussell/oh-my-zsh
-antibody bundle robbyrussell/oh-my-zsh path:plugins/git
-antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
-antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
-
-
-antibody bundle zsh-users/zsh-autosuggestions
-
-# This needs to be the last bundle.
-antibody bundle zsh-users/zsh-syntax-highlighting
-
-# Load the theme.
-antibody bundle spaceship-prompt/spaceship-prompt
-
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load
 
 ################################################################################
 # Configuration
@@ -45,9 +35,9 @@ openTmux() {
 }
 
 # start tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  openTmux
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   openTmux
+# fi
 
 export LANG=en_US.UTF-8
 

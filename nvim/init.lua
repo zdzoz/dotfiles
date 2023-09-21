@@ -1,0 +1,17 @@
+-- Plugins --
+-- folke/flash
+-- trouble
+-- surround
+-- which-key
+-- project manager?
+-- mason
+-- mason-dap
+-- conform?
+-- oil?
+-- windows.nvim
+-- lazy or new nvim plugin manager
+-- cmake
+-- neotree
+-- treesitter
+-- telescope
+-- tokyonight.nvim or cattpuccin
