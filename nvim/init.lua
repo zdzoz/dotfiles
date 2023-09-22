@@ -1,17 +1,17 @@
 -- Plugins --
 -- folke/flash
+-- hardtime
 -- trouble
 -- surround
--- which-key
 -- project manager?
+-- todo-comments
 -- mason
 -- mason-dap
 -- conform?
--- oil?
 -- windows.nvim
--- lazy or new nvim plugin manager
 -- cmake
 -- neotree
 -- treesitter
 -- telescope
--- tokyonight.nvim or cattpuccin
+-- toggleterm
+require('config.lazy')
