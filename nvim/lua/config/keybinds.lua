@@ -28,7 +28,7 @@ vim.keymap.set({"n", "v", "i"}, "<D-s>", "<cmd>write<cr>", { desc = "Save" })
 vim.keymap.set({"n", "v", "i"}, "<C-s>", "<cmd>write<cr>", { desc = "Save" })
 
 -- add empty lines
-vim.keymap.set({ "n" }, "F", ":put =nr2char(10)<cr>")
+vim.keymap.set({ "n" }, "<s-cr>", ":put =nr2char(10)<cr>")
 
 -- map kj to <esc>
 vim.keymap.set("!", "kj", "<esc>")
@@ -50,6 +50,9 @@ vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
+-- space as esc in visual mode
+vim.keymap.set("x", "<space>", "<esc>")
+
 -- quit
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
@@ -66,12 +69,12 @@ vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right" })
 
 
 -- terminal
-vim.keymap.set("n", "<C-_>", "<cmd>split<cr><cmd>resize 15<cr><cmd>term<cr>i")
+-- vim.keymap.set("n", "<C-/>", "<cmd>split<cr><cmd>resize 15<cr><cmd>term<cr>i")
 vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-vim.keymap.set("t", "<C-_>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+vim.keymap.set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })

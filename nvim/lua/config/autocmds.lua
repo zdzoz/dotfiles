@@ -7,8 +7,15 @@ end
 -- autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
 vim.api.nvim_create_autocmd("TermClose", {
     callback = function()
-       vim.cmd("close")
+       vim.cmd("bwipeout")
     end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { 'c', 'cpp', 'h', 'hpp' },
+  callback = function()
+    vim.opt.commentstring = "// %s"
+  end,
 })
 
 -- close some filetypes with <q>

@@ -43,6 +43,59 @@ return {
     priority = 9999,
     lazy = false,
   },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {},
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = 'VeryLazy',
+    opts = {
+      show_current_context = true,
+      -- show_current_context_start = true,
+    },
+  },
+  {
+    'nmac427/guess-indent.nvim',
+    config = function() require('guess-indent').setup {} end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      { '<leader>ct', mode = 'n', '<cmd>TodoTelescope<cr>',                            desc = 'Todos' },
+      { ']t',         mode = 'n', function() require("todo-comments").jump_next() end, desc = 'Next todo comment' },
+      { '[t',         mode = 'n', function() require("todo-comments").jump_prev() end, desc = 'Previous todo comment' },
+    },
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "o", "x" }, function() require("flash").jump() end,       desc = "Flash" },
+      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+      {
+        "R",
+        mode = { "o", "x" },
+        function() require("flash").treesitter_search() end,
+        desc =
+        "Treesitter Search"
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function() require("flash").toggle() end,
+        desc =
+        "Toggle Flash Search"
+      },
+    },
+  },
   -- {
   --   'glepnir/dashboard-nvim',
   --   event = 'VimEnter',
@@ -84,9 +137,25 @@ return {
   --   },
   --   dependencies = { {'nvim-tree/nvim-web-devicons'}}
   -- },
+  { 'stevearc/dressing.nvim', event = "VeryLazy" },
   {
-    'numToStr/Comment.nvim',
-    opts = {},
-    lazy = false,
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local wk = require('which-key')
+      wk.register({
+        ['<leader>x'] = {
+          x = { '<cmd>TroubleToggle<cr>', 'Trouble' },
+          w = { '<cmd>TroubleToggle workspace_diagnostics<cr>', 'Trouble: Workspace' },
+          d = { '<cmd>TroubleToggle document_diagnostics<cr>', 'Trouble: Document' },
+          q = { '<cmd>TroubleToggle quickfix<cr>', 'Trouble: Quickfix' },
+          l = { '<cmd>TroubleToggle loclist<cr>', 'Trouble: Loclist' },
+        },
+        g = {
+          R = { '<cmd>TroubleToggle lsp_references<cr>', 'Trouble: References' },
+        },
+      })
+    end,
   },
+  { "folke/neodev.nvim", opts = {} },
 }

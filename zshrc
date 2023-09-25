@@ -1,9 +1,9 @@
 if [[ $(uname) == "Darwin" ]]; then
-if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
+  if [ "$(arch)" = "i386" ]; then
+      eval "$(/usr/local/bin/brew shellenv)"
+  else
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 fi
 
 ################################################################################

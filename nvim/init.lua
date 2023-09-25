@@ -1,17 +1,8 @@
 -- Plugins --
--- folke/flash
--- hardtime
--- trouble
--- surround
--- project manager?
--- todo-comments
--- mason
--- mason-dap
--- conform?
--- windows.nvim
--- cmake
--- neotree
--- treesitter
--- telescope
+-- hardtime?
+-- project.nvim?
+-- lualine?
 -- toggleterm
+-- mason-dap
+-- dap
 require('config.lazy')
