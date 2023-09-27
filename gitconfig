@@ -3,6 +3,7 @@
 	br = branch
 	st = status
 	c = commit
+	a = add
 	cm = commit -m
 	cam = commit -am
 	l = log --graph --oneline
