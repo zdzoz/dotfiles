@@ -20,8 +20,18 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev se
 vim.keymap.set("c", "<c-n>", function() if vim.fn.wildmenumode() == 1 then return "<c-n>" else return "<down>" end end, { expr = true })
 vim.keymap.set("c", "<c-p>", function() if vim.fn.wildmenumode() == 1 then return "<c-p>" else return "<up>" end end, { expr = true })
 
--- clear search
+-- search
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- better join
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- preserve after paste
+vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- Save
 vim.keymap.set({"n", "v", "i"}, "<D-s>", "<cmd>write<cr>", { desc = "Save" })

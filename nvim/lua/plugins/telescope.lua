@@ -5,6 +5,7 @@ return {
     config = function()
       local trouble = require("trouble.providers.telescope")
       local telescope = require("telescope")
+      local builtin = require("telescope.builtin")
 
       telescope.setup({
         defaults = {
@@ -46,7 +47,7 @@ return {
         ['<leader>s'] = {
           f = { '<cmd>Telescope live_grep<cr>', 'Search files (grep)' },
           g = { '<cmd>Telescope git_files<cr>', 'Search files (git)' },
-          w = { '<cmd>Telescop grep_string<cr>', 'Search word' },
+          w = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, 'Search word' },
           r = { "<cmd>Telescope oldfiles<cr>", "Search recent" },
           d = { "<cmd>Telescope oldfiles<cr>", "Search diagnostics" },
         },

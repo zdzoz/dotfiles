@@ -5,4 +5,5 @@
 -- toggleterm
 -- mason-dap
 -- dap
-require('config.lazy')
+-- undotree
+require('config')
