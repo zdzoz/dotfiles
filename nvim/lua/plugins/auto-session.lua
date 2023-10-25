@@ -11,14 +11,8 @@ return {
         auto_session_suppress_dirs = { "~/", "~/Documents/Projects", "~/Downloads", "/" },
         session_lens = {
           load_on_setup = true,
+          prompt_title = "Projects",
         },
-      }
-
-      require('telescope').setup {
-        extensions = {
-
-
-        }
       }
 
       -- require("telescope").load_extension "session-lens"
