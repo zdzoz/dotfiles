@@ -14,6 +14,12 @@ return {
         },
       }
 
+      require('telescope').setup {
+        extensions = {
+
+
+        }
+      }
 
       -- require("telescope").load_extension "session-lens"
       local wk = require('which-key')

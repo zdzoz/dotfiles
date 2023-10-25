@@ -1,5 +1,16 @@
 return {
   {
+    'github/copilot.vim',
+    event = 'VeryLazy',
+    config = function()
+      vim.cmd[[
+        Copilot setup
+        imap <silent><script><expr> <s-cr> copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:true
+      ]]
+    end
+  },
+  {
     'hrsh7th/nvim-cmp',
     event = "LspAttach",
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path', 'saadparwaiz1/cmp_luasnip', 'L3MON4D3/LuaSnip' },
