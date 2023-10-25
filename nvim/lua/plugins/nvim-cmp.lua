@@ -2,7 +2,7 @@ return {
   {
     'hrsh7th/nvim-cmp',
     event = "LspAttach",
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip', 'L3MON4D3/LuaSnip' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path', 'saadparwaiz1/cmp_luasnip', 'L3MON4D3/LuaSnip' },
     config = function()
       local luasnip = require 'luasnip'
 
@@ -45,6 +45,8 @@ return {
         sources = {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'path' },
+          { name = 'neorg' },
         },
       }
     end,

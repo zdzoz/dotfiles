@@ -68,6 +68,7 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- buffer
 vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Swap buffers" })
+vim.keymap.set('n', '<leader>bq', '<cmd>bw<cr>', { desc = "Quit buffer" })
 
 -- window
 vim.keymap.set("n", "<leader>ww", "<c-w>p", { desc = "Swap window" })
@@ -84,7 +85,9 @@ vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" }
 vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-vim.keymap.set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- Neorg
+vim.keymap.set('n', '<leader>n', '<cmd>Neorg<cr>', { desc = 'Neorg' })

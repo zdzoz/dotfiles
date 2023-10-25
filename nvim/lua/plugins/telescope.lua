@@ -10,8 +10,14 @@ return {
       telescope.setup({
         defaults = {
           mappings = {
-            i = { ["<c-t>"] = trouble.open_with_trouble },
-            n = { ["<c-t>"] = trouble.open_with_trouble },
+            i = {
+              ["<c-t>"] = trouble.open_with_trouble,
+              ['<c-q>'] = require('telescope.actions').delete_buffer
+            },
+            n = {
+              ["<c-t>"] = trouble.open_with_trouble,
+              ['<c-q>'] = require('telescope.actions').delete_buffer,
+            },
           },
         },
       })
@@ -49,7 +55,8 @@ return {
           g = { '<cmd>Telescope git_files<cr>', 'Search files (git)' },
           w = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, 'Search word' },
           r = { "<cmd>Telescope oldfiles<cr>", "Search recent" },
-          d = { "<cmd>Telescope oldfiles<cr>", "Search diagnostics" },
+          d = { "<cmd>Telescope diagnostics<cr>", "Search diagnostics" },
+          b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search buffer" },
         },
       })
     end,

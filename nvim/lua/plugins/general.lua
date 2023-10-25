@@ -50,18 +50,44 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = 'ibl',
     event = 'VeryLazy',
-    opts = {
-      show_current_context = true,
-      -- show_current_context_start = true,
-    },
+    opts = {},
+    config = function()
+      local highlight = {
+        "RainbowRed",
+        "RainbowYellow",
+        "RainbowBlue",
+        "RainbowOrange",
+        "RainbowGreen",
+        "RainbowViolet",
+        "RainbowCyan",
+      }
+
+      local hooks = require "ibl.hooks"
+
+      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+      end)
+
+      -- vim.g.rainbow_delimiters = { highlight = highlight }
+      require("ibl").setup { scope = { highlight = highlight } }
+
+      -- hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+    end
   },
   {
     'nmac427/guess-indent.nvim',
     config = function() require('guess-indent').setup {} end,
   },
   {
-    "folke/todo-comments.nvim",
+    'folke/todo-comments.nvim',
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
     opts = {},
@@ -96,54 +122,14 @@ return {
       },
     },
   },
-  -- {
-  --   'glepnir/dashboard-nvim',
-  --   event = 'VimEnter',
-  --   opts = {
-  --     theme = 'doom',
-  --     shortcut_type = 'letter',
-  --     config = {
-  --       week_header = {
-  --         enable = true,
-  --       },
-  --       center = {
-  --         {
-  --           icon = ' ',
-  --           -- icon_hl = 'Title',
-  --           desc = 'Find File',
-  --           -- desc_hl = 'String',
-  --           -- key = 'l',
-  --           keymap = 'SPC l',
-  --           -- key_hl = 'Title',
-  --         },
-  --         {
-  --           icon = ' ',
-  --           icon_hl = 'Title',
-  --           desc = 'Lazy',
-  --           -- desc_hl = 'String',
-  --           key = 'SPC l',
-  --           keymap = 'SPC l',
-  --           key_hl = 'Title',
-  --         },
-  --       },
-  --       -- footer = {},
-  --     },
-  --     preview = {
-  --       -- command = false,
-  --       -- file_path     -- preview file path
-  --       -- file_height   -- preview file height
-  --       -- file_width    -- preview file width
-  --     },
-  --   },
-  --   dependencies = { {'nvim-tree/nvim-web-devicons'}}
-  -- },
-  { 'stevearc/dressing.nvim', event = "VeryLazy" },
+  { 'stevearc/dressing.nvim',  event = "VeryLazy" },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       local wk = require('which-key')
       wk.register({
+        ['<C-->'] = { mode = { 'n', 't' }, '<cmd>ToggleTerm<cr>', 'Toggle Terminal' },
         ['<leader>x'] = {
           x = { '<cmd>TroubleToggle<cr>', 'Trouble' },
           w = { '<cmd>TroubleToggle workspace_diagnostics<cr>', 'Trouble: Workspace' },
@@ -157,5 +143,6 @@ return {
       })
     end,
   },
-  { "folke/neodev.nvim", opts = {} },
+  { "folke/neodev.nvim",       opts = {} },
+  { 'akinsho/toggleterm.nvim', version = "*",     config = true },
 }
