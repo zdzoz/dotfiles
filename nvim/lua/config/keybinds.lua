@@ -45,15 +45,12 @@ vim.keymap.set("!", "kj", "<esc>")
 vim.keymap.set("t", "kj", "<C-\\><C-n>")
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 
+-- Repeat macro
+vim.keymap.set('n', ',', '@@', { desc = 'Repeat macro' })
+
 -- better indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
-
--- toggle
--- vim.keymap.set("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
--- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
--- map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
--- map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")
