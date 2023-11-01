@@ -19,6 +19,7 @@ return {
       local wk = require('which-key')
       wk.register({
         ['<leader>ss'] = { require("auto-session.session-lens").search_session, 'Session' },
+        ['<leader>sn'] = { '<cmd>silent !tmux neww tmux-sessionizer<cr>', 'New Session' },
       })
     end
   },

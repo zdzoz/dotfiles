@@ -42,7 +42,7 @@ vim.keymap.set({ "n" }, "<s-cr>", ":put =nr2char(10)<cr>")
 
 -- map kj to <esc>
 vim.keymap.set("!", "kj", "<esc>")
-vim.keymap.set("t", "kj", "<C-\\><C-n>")
+vim.keymap.set("t", "<c-\\>", "<C-\\><C-n>")
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 
 -- Repeat macro
@@ -78,6 +78,7 @@ vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right" })
 
 -- terminal
 -- vim.keymap.set("n", "<C-/>", "<cmd>split<cr><cmd>resize 15<cr><cmd>term<cr>i")
+-- vim.keymap.set('n', '<c-->', '<cmd>silent !tmux split-window -p 15<cr>', { desc = 'Open terminal below' })
 vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })

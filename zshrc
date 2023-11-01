@@ -17,27 +17,33 @@ antidote load
 # Configuration
 ################################################################################
 
-openTmux() {
-  declare -A sessions
-  sessions=($(tmux ls -F "#{session_name} #{session_attached}"))
-  for session attached in ${(kv)sessions};
-  do
-      if [[ $attached -eq 0 ]]; then
-          SES=$session
-          break
-      fi
-  done
-  if [[ -v SES ]]; then
-      exec tmux new -A -s $SES
-  else
-      exec tmux
-  fi
-}
+# openTmux() {
+#   declare -A sessions
+#   sessions=($(tmux ls -F "#{session_name} #{session_attached}"))
+#   for session attached in ${(kv)sessions};
+#   do
+#       if [[ $attached -eq 0 ]]; then
+#           SES=$session
+#           break
+#       fi
+#   done
+#   if [[ -v SES ]]; then
+#       exec tmux new -A -s $SES
+#   else
+#       exec tmux
+#   fi
+# }
 
-# start tmux
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   openTmux
-# fi
+# start tmux and attach to any detached session
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  if tmux has-session -t main 2>/dev/null && tmux ls | grep main | grep -q attached; then
+      # create new session
+      exec tmux
+  else
+    # create or attach
+    exec tmux new -As main
+  fi
+fi
 
 export LANG=en_US.UTF-8
 
@@ -54,6 +60,7 @@ export BAT_THEME="Dracula"
 
 alias vim="nvim"
 alias cat="bat"
+alias tms="tmux-sessionizer"
 
 alias vol="volta"
 alias pm="pnpm"
