@@ -53,7 +53,7 @@ return {
         ['<leader>s'] = {
           f = { '<cmd>Telescope live_grep<cr>', 'Search files (grep)' },
           g = { '<cmd>Telescope git_files<cr>', 'Search files (git)' },
-          w = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, 'Search word' },
+          w = { function() builtin.grep_string({ search = vim.fn.input("Search Word: ") }) end, 'Search word' },
           r = { "<cmd>Telescope oldfiles<cr>", "Search recent" },
           d = { "<cmd>Telescope diagnostics<cr>", "Search diagnostics" },
           b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search buffer" },

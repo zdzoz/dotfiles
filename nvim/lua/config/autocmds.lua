@@ -1,3 +1,10 @@
+-- local function set_mkprg(str)
+--   if str then
+--     vim.g.Session_mkprg = str
+--     vim.o.makeprg = [[tmux split -h "trap 'echo \"\"' INT; ]] .. vim.g.Session_mkprg .. [[; trap - INT; read -s -k '?Press any key to continue.'"]]
+--   end
+-- end
+
 local function augroup(name)
   return vim.api.nvim_create_augroup("config_" .. name, { clear = true })
 end
@@ -14,10 +21,16 @@ vim.api.nvim_create_autocmd("FileType", {
   group = augroup("C"),
   pattern = { 'c', 'cpp', 'h', 'hpp', 'objc', 'objcpp', 'cuda', 'proto' },
   callback = function(ev)
+    if not vim.g.Session_mkprg then
+      SET_MKPRG("cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build -S . && ninja -C build")
+    end
     vim.opt.commentstring = "// %s"
     vim.keymap.set('n', '<leader>cs', '<cmd>ClangdSwitchSourceHeader<cr>', { buffer = ev.buf, desc = 'Switch to source/header' })
   end,
 })
+
+-- recognize glsl
+vim.cmd[[ au BufNewFile,BufRead *.glsl,*.vert,*.tesc,*.tese,*.frag,*.geom,*.comp set filetype=glsl ]]
 
 -- recognize wgsl
 vim.cmd[[ au BufNewFile,BufRead *.wgsl set filetype=wgsl ]]

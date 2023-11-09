@@ -5,7 +5,7 @@ return {
     lazy = false,
     dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-nvim-lsp' },
     keys = {
-      { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' },
+      { '<leader>cM', '<cmd>Mason<cr>', desc = 'Mason' },
     },
     config = function()
       require('mason').setup({
@@ -20,8 +20,13 @@ return {
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      -- GLSL
+      require('lspconfig').glsl_analyzer.setup {
+        capabilities = capabilities,
+      }
+
       local handlers = {
-        function (server_name) -- default handler
+        function(server_name) -- default handler
           require("lspconfig")[server_name].setup {
             capabilities = capabilities,
           }
@@ -31,6 +36,25 @@ return {
         -- ["rust_analyzer"] = function()
         --     require("rust-tools").setup{}
         -- end,
+        ['clangd'] = function()
+          require('lspconfig').clangd.setup {
+            capabilities = capabilities,
+            cmd = {
+              'clangd',
+              '--background-index',
+              '--clang-tidy',
+              '--completion-style=bundled',
+              "--offset-encoding=utf-16",
+              -- '--header-insertion=iwyu',
+              '--suggest-missing-includes',
+              '--pch-storage=memory',
+              '--cross-file-rename',
+              -- '--clang-tidy-checks=-*,bugprone-*,clang-analyzer-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*'
+              '--fallback-style=WebKit',
+              '--style={}'
+            },
+          }
+        end,
 
         ["lua_ls"] = function()
           require("lspconfig").lua_ls.setup {
@@ -76,22 +100,28 @@ return {
           vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = ev.buf, desc = 'Go to implementation' })
           vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf })
           vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf })
-          vim.keymap.set('n', '<leader>cwa', vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = 'Add workspace folder' } )
-          vim.keymap.set('n', '<leader>cwr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf, desc = 'Remove workspace folder' })
-          vim.keymap.set('n', '<leader>cwl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { buffer = ev.buf, desc = 'List workspace folders' })
-          vim.keymap.set('n', '<leader>cd', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = 'See type definition' })
+          vim.keymap.set('n', '<leader>cwa', vim.lsp.buf.add_workspace_folder,
+            { buffer = ev.buf, desc = 'Add workspace folder' })
+          vim.keymap.set('n', '<leader>cwr', vim.lsp.buf.remove_workspace_folder,
+            { buffer = ev.buf, desc = 'Remove workspace folder' })
+          vim.keymap.set('n', '<leader>cwl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+            { buffer = ev.buf, desc = 'List workspace folders' })
+          vim.keymap.set('n', '<leader>cd', vim.lsp.buf.type_definition,
+            { buffer = ev.buf, desc = 'See type definition' })
           vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = ev.buf, desc = 'Rename' })
           vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = 'Code action' })
           vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = ev.buf, desc = 'List references' })
 
           if vim.bo[ev.buf].filetype == 'python' then
-            vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !black %') end, { buffer = ev.buf, desc = 'Format code' })
+            vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !black %') end,
+              { buffer = ev.buf, desc = 'Format code' })
           else
-            vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = true } end, { buffer = ev.buf, desc = 'Format code' })
+            vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = true } end,
+              { buffer = ev.buf, desc = 'Format code' })
           end
 
           if vim.lsp.inlay_hint then
-            vim.keymap.set('n', '<leader>ch', function () vim.lsp.inlay_hint(0, nil) end, { desc = 'Toggle inlay hints' })
+            vim.keymap.set('n', '<leader>ch', function() vim.lsp.inlay_hint(0, nil) end, { desc = 'Toggle inlay hints' })
           end
         end,
       })

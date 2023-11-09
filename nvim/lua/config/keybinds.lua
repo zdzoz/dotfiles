@@ -17,8 +17,10 @@ vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next se
 vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-vim.keymap.set("c", "<c-n>", function() if vim.fn.wildmenumode() == 1 then return "<c-n>" else return "<down>" end end, { expr = true })
-vim.keymap.set("c", "<c-p>", function() if vim.fn.wildmenumode() == 1 then return "<c-p>" else return "<up>" end end, { expr = true })
+vim.keymap.set("c", "<c-n>", function() if vim.fn.wildmenumode() == 1 then return "<c-n>" else return "<down>" end end,
+  { expr = true })
+vim.keymap.set("c", "<c-p>", function() if vim.fn.wildmenumode() == 1 then return "<c-p>" else return "<up>" end end,
+  { expr = true })
 
 -- search
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -34,8 +36,13 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- Save
-vim.keymap.set({"n", "v", "i"}, "<D-s>", "<cmd>write<cr>", { desc = "Save" })
-vim.keymap.set({"n", "v", "i"}, "<C-s>", "<cmd>write<cr>", { desc = "Save" })
+local function save()
+  -- vim.g.Session_mkprg = vim.o.makeprg
+  -- print("Saved: " .. vim.g.Session_mkprg)
+  vim.cmd("silent! wall")
+end
+vim.keymap.set({ "n", "v", "i" }, "<D-s>", save, { desc = "Save" })
+vim.keymap.set({ "n", "v", "i" }, "<C-s>", save, { desc = "Save" })
 
 -- add empty lines
 vim.keymap.set({ "n" }, "<s-cr>", ":put =nr2char(10)<cr>")

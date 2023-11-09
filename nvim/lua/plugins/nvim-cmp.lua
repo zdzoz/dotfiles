@@ -4,7 +4,7 @@ return {
     event = 'VeryLazy',
     config = function()
       vim.cmd[[
-        Copilot setup
+        silent Copilot setup
         imap <silent><script><expr> <s-cr> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true
       ]]
