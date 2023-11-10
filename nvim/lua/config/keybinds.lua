@@ -36,16 +36,11 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- Save
-local function save()
-  -- vim.g.Session_mkprg = vim.o.makeprg
-  -- print("Saved: " .. vim.g.Session_mkprg)
-  vim.cmd("silent! wall")
-end
-vim.keymap.set({ "n", "v", "i" }, "<D-s>", save, { desc = "Save" })
-vim.keymap.set({ "n", "v", "i" }, "<C-s>", save, { desc = "Save" })
+vim.keymap.set({ "n", "v", "i" }, "<D-s>", "<cmd>silent! wall<cr>", { desc = "Save" })
+vim.keymap.set({ "n", "v", "i" }, "<C-s>", "<cmd>silent! wall<cr>", { desc = "Save" })
 
 -- add empty lines
-vim.keymap.set({ "n" }, "<s-cr>", ":put =nr2char(10)<cr>")
+vim.keymap.set({ "n" }, "<s-cr>", "<cmd>silent put =nr2char(10)<cr>")
 
 -- map kj to <esc>
 vim.keymap.set("!", "kj", "<esc>")
@@ -77,15 +72,14 @@ vim.keymap.set('n', '<leader>bq', '<cmd>bw<cr>', { desc = "Quit buffer" })
 -- window
 vim.keymap.set("n", "<leader>ww", "<c-w>p", { desc = "Swap window" })
 vim.keymap.set("n", "<leader>wq", "<c-w>c", { desc = "Quit window" })
-vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
-vim.keymap.set("n", "<leader>w\\", "<C-W>v", { desc = "Split window right" })
-vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
-vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right" })
+vim.keymap.set("n", "<leader>w-", "<c-w>s", { desc = "Split window below" })
+vim.keymap.set("n", "<leader>w\\", "<c-w>v", { desc = "Split window right" })
+vim.keymap.set("n", "<leader>-", "<c-w>s", { desc = "Split window below" })
+vim.keymap.set("n", "<leader>\\", "<c-w>v", { desc = "Split window right" })
+vim.keymap.set("n", "<leader>w=", "<c-w>=", { desc = "Equalize width and height" })
 
 
 -- terminal
--- vim.keymap.set("n", "<C-/>", "<cmd>split<cr><cmd>resize 15<cr><cmd>term<cr>i")
--- vim.keymap.set('n', '<c-->', '<cmd>silent !tmux split-window -p 15<cr>', { desc = 'Open terminal below' })
 vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })

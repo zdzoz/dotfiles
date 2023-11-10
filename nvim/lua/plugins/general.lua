@@ -39,11 +39,6 @@ return {
     },
   },
   {
-    "christoomey/vim-tmux-navigator",
-    priority = 9999,
-    lazy = false,
-  },
-  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {},
@@ -150,5 +145,27 @@ return {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  -- {
+  --   "christoomey/vim-tmux-navigator",
+  --   event = "VeryLazy",
+  -- },
+  {
+    'mrjones2014/smart-splits.nvim',
+    event = "VeryLazy",
+    config = function()
+      local ss = require('smart-splits')
+      ss.setup({
+        default_amount = 10,
+      })
+      vim.keymap.set('n', '<c-,>', ss.resize_left)
+      vim.keymap.set('n', '<c-.>', ss.resize_right)
+      vim.keymap.set('n', '<c-->', ss.resize_down)
+      vim.keymap.set('n', '<c-=>', ss.resize_up)
+      vim.keymap.set('n', '<c-h>', ss.move_cursor_left)
+      vim.keymap.set('n', '<c-j>', ss.move_cursor_down)
+      vim.keymap.set('n', '<c-k>', ss.move_cursor_up)
+      vim.keymap.set('n', '<c-l>', ss.move_cursor_right)
+    end,
   },
 }
