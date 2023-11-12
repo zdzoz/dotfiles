@@ -45,13 +45,10 @@ return {
               '--clang-tidy',
               '--completion-style=bundled',
               "--offset-encoding=utf-16",
-              -- '--header-insertion=iwyu',
-              '--suggest-missing-includes',
+              '--header-insertion=iwyu',
               '--pch-storage=memory',
-              '--cross-file-rename',
               -- '--clang-tidy-checks=-*,bugprone-*,clang-analyzer-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*'
               '--fallback-style=WebKit',
-              '--style={}'
             },
           }
         end,

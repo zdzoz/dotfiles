@@ -117,7 +117,7 @@ return {
       },
     },
   },
-  { 'stevearc/dressing.nvim',  event = "VeryLazy" },
+  { 'stevearc/dressing.nvim', event = "VeryLazy" },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -138,8 +138,12 @@ return {
       })
     end,
   },
-  { "folke/neodev.nvim",       opts = {} },
-  { 'akinsho/toggleterm.nvim', version = "*",     config = true },
+  { "folke/neodev.nvim",      opts = {} },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = function() require("toggleterm").setup { open_mapping = [[<c-/>]], } end,
+  },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

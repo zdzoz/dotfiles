@@ -29,6 +29,10 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- wrap for markdown only
+vim.cmd[[ au BufEnter *.md set wrap ]]
+vim.cmd[[ au BufLeave *.md set nowrap ]]
+
 -- recognize glsl
 vim.cmd[[ au BufNewFile,BufRead *.glsl,*.vert,*.tesc,*.tese,*.frag,*.geom,*.comp set filetype=glsl ]]
 
