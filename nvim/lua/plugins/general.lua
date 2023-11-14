@@ -133,7 +133,7 @@ return {
           l = { '<cmd>TroubleToggle loclist<cr>', 'Trouble: Loclist' },
         },
         g = {
-          R = { '<cmd>TroubleToggle lsp_references<cr>', 'Trouble: References' },
+          r = { '<cmd>TroubleToggle lsp_references<cr>', 'Trouble: References' },
         },
       })
     end,

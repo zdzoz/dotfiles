@@ -8,7 +8,7 @@ return {
       configs.setup({
         ensure_installed = {
           'lua', 'vim', 'vimdoc', 'query',
-          'c', 'cpp', 'cmake', 'wgsl', 'glsl',
+          'c', 'cpp', 'cmake', 'glsl',
           'javascript', 'html',
           'python',
         },

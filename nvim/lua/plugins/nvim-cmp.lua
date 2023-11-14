@@ -1,7 +1,7 @@
 return {
   {
     'github/copilot.vim',
-    event = 'VeryLazy',
+    event = 'LspAttach',
     config = function()
       vim.cmd[[
         silent Copilot setup

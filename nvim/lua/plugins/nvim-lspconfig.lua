@@ -107,7 +107,7 @@ return {
             { buffer = ev.buf, desc = 'See type definition' })
           vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = ev.buf, desc = 'Rename' })
           vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = 'Code action' })
-          vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = ev.buf, desc = 'List references' })
+          vim.keymap.set('n', 'gR', '<cmd>Telescope lsp_references<cr>', { buffer = ev.buf, desc = 'List references' })
 
           if vim.bo[ev.buf].filetype == 'python' then
             vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !black %') end,
