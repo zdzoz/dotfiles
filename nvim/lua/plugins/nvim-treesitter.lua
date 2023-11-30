@@ -30,32 +30,36 @@ return {
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
               [']m'] = '@function.outer',
-              [']c'] = { query = '@class.outer', desc = 'Next class start' },
             },
             goto_next_end = {
               [']M'] = '@function.outer',
-              [']['] = '@class.outer',
             },
             goto_previous_start = {
               ['[m'] = '@function.outer',
-              ['[['] = '@class.outer',
             },
             goto_previous_end = {
               ['[M'] = '@function.outer',
-              ['[c'] = '@class.outer',
             },
             goto_next = {
-              [']]'] = { query = '@scope', query_group = 'locals', desc = 'Next scope' },
-              [']f'] = '@function.outer',
-              [']d'] = '@conditional.outer',
+              [']s'] = { query = '@scope', query_group = 'locals', desc = 'Next scope' },
+              [']]'] = { query = '@function.outer', desc = 'Next function' },
+              [']f'] = { query = '@function.outer', desc = 'Next function' },
+              [']c'] = { query = '@class.outer', desc = 'Next class' },
             },
             goto_previous = {
-              ['[['] = { query = '@scope', query_group = 'locals', desc = 'Previous scope' },
-              ['[f'] = '@function.outer',
-              ['[d'] = '@conditional.outer',
+              ['[s'] = { query = '@scope', query_group = 'locals', desc = 'Previous scope' },
+              ['[['] = { query = '@function.outer', desc = 'Previous function' },
+              ['[f'] = { query = '@function.outer', desc = 'Previous function' },
+              ['[c'] = { query = '@class.outer', desc = 'Previous class' },
             }
           },
         },
+      })
+
+      -- overwrite which-key name
+      require('which-key').register({
+        [']s'] = { name = 'Next Scope' },
+        ['[s'] = { name = 'Previous Scope' }
       })
     end
   },

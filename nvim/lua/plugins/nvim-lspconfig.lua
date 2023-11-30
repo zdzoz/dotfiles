@@ -1,5 +1,14 @@
 return {
   {
+    "folke/neodev.nvim",
+    priority = 1000,
+    config = function()
+      require("neodev").setup({
+        library = { plugins = { "nvim-dap-ui" }, types = true },
+      })
+    end,
+  },
+  {
     'neovim/nvim-lspconfig',
     priority = 999,
     lazy = false,
@@ -45,7 +54,8 @@ return {
               '--clang-tidy',
               '--completion-style=bundled',
               "--offset-encoding=utf-16",
-              '--header-insertion=iwyu',
+              -- '--header-insertion=iwyu',
+              "--header-insertion=never",
               '--pch-storage=memory',
               -- '--clang-tidy-checks=-*,bugprone-*,clang-analyzer-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*'
               '--fallback-style=WebKit',

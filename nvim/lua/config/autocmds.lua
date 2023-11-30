@@ -12,32 +12,54 @@ end
 -- automatically close terminal
 -- autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
 vim.api.nvim_create_autocmd("TermClose", {
-    callback = function()
-       vim.cmd("bwipeout")
-    end
+  callback = function()
+    vim.cmd("bwipeout")
+  end
 })
 
+-- C
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("C"),
   pattern = { 'c', 'cpp', 'h', 'hpp', 'objc', 'objcpp', 'cuda', 'proto' },
   callback = function(ev)
     if not vim.g.Session_mkprg then
-      SET_MKPRG("cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build -S . && ninja -C build")
+      SET_MKPRG("cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build -S . && ninja -C build")
     end
+    vim.opt.shiftwidth = 4
     vim.opt.commentstring = "// %s"
     vim.keymap.set('n', '<leader>cs', '<cmd>ClangdSwitchSourceHeader<cr>', { buffer = ev.buf, desc = 'Switch to source/header' })
   end,
 })
 
 -- wrap for markdown only
-vim.cmd[[ au BufEnter *.md set wrap ]]
-vim.cmd[[ au BufLeave *.md set nowrap ]]
+vim.cmd [[ au BufEnter *.md set wrap ]]
+vim.cmd [[ au BufLeave *.md set nowrap ]]
 
 -- recognize glsl
-vim.cmd[[ au BufNewFile,BufRead *.glsl,*.vert,*.tesc,*.tese,*.frag,*.geom,*.comp set filetype=glsl ]]
+vim.cmd [[ au BufNewFile,BufRead *.glsl,*.vert,*.tesc,*.tese,*.frag,*.geom,*.comp set filetype=glsl ]]
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("GLSL"),
+  pattern = { 'glsl' },
+  callback = function(ev)
+    vim.opt.commentstring = "// %s"
+
+    -- get current file and swap extensions
+    vim.keymap.set('n', '<leader>cs', function()
+      local file = vim.fn.expand("%:r")
+      local ext = vim.fn.expand("%:e")
+      ext = ext == "vert" and "frag" or "vert"
+      file = file .. '.' .. ext
+      if vim.fn.file_readable(file) == 1 then
+        vim.cmd('e ' .. file)
+      else
+        print("File not found: " .. file)
+      end
+    end, { buffer = ev.buf, desc = 'Switch to vert/frag' })
+  end,
+})
 
 -- recognize wgsl
-vim.cmd[[ au BufNewFile,BufRead *.wgsl set filetype=wgsl ]]
+vim.cmd [[ au BufNewFile,BufRead *.wgsl set filetype=wgsl ]]
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
@@ -66,14 +88,14 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
- group = augroup("auto_create_dir"),
- callback = function(event)
-   if event.match:match("^%w%w+://") then
-     return
-   end
-   local file = vim.loop.fs_realpath(event.match) or event.match
-   vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
- end,
+  group = augroup("auto_create_dir"),
+  callback = function(event)
+    if event.match:match("^%w%w+://") then
+      return
+    end
+    local file = vim.loop.fs_realpath(event.match) or event.match
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
 })
 
 -- Neorg - Update index on load

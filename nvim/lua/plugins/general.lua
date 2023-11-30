@@ -138,7 +138,6 @@ return {
       })
     end,
   },
-  { "folke/neodev.nvim",      opts = {} },
   {
     'akinsho/toggleterm.nvim',
     version = "*",
