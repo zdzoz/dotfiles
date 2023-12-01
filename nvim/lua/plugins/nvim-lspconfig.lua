@@ -12,7 +12,7 @@ return {
     'neovim/nvim-lspconfig',
     priority = 999,
     lazy = false,
-    dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-nvim-lsp' },
+    dependencies = { 'simrat39/rust-tools.nvim', 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-nvim-lsp' },
     keys = {
       { '<leader>cM', '<cmd>Mason<cr>', desc = 'Mason' },
     },
@@ -42,9 +42,10 @@ return {
         end,
 
         -- overrides
-        -- ["rust_analyzer"] = function()
-        --     require("rust-tools").setup{}
-        -- end,
+        ["rust_analyzer"] = function()
+            require("rust-tools").setup{}
+        end,
+
         ['clangd'] = function()
           require('lspconfig').clangd.setup {
             capabilities = capabilities,
@@ -81,7 +82,7 @@ return {
 
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'clangd', 'lua_ls', 'pyright',
+          'clangd', 'lua_ls', 'pyright', 'rust_analyzer'
         },
         handlers = handlers
       })
