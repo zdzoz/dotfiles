@@ -15,6 +15,18 @@ return {
 
       telescope.setup({
         defaults = {
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--glob",
+            "!**/.git/*",
+          },
           borderchars = {
             { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
             prompt = { " ", " ", " ", " ", ' ', ' ', " ", " " },
@@ -26,15 +38,28 @@ return {
           mappings = {
             i = {
               ["<c-t>"] = trouble.open_with_trouble,
-              ['<c-q>'] = actions.delete_buffer
+              ["<c-u>"] = false,
             },
             n = {
               ["<c-t>"] = trouble.open_with_trouble,
-              ['<c-q>'] = actions.delete_buffer,
             },
           },
         },
         pickers = {
+          find_files = {
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+          },
+          buffers = {
+            sort_lastused = true,
+            mappings = {
+              i = {
+                ["<c-d>"] = actions.delete_buffer,
+              },
+              n = {
+                ["<c-d>"] = actions.delete_buffer,
+              },
+            },
+          },
           man_pages = {
             sections = { "ALL" },
           },
@@ -45,7 +70,7 @@ return {
               ["i"] = {
                 ["<c-r>"] = fb_actions.rename,
                 ["<c-d>"] = fb_actions.remove,
-                ["<c-u>"] = false,
+                ["<c-y>"] = fb_actions.copy,
               },
             },
           },
@@ -55,7 +80,11 @@ return {
 
       local def_prev = function()
         return {
-          width = 0.8,
+          layout_config = {
+            height = 0.7,
+            width = 0.7,
+            preview_width = 0.5,
+          },
           prompt_title = false,
         }
       end
