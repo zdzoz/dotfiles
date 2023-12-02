@@ -1,7 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.3',
+    tag = '0.1.4',
     lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', "nvim-telescope/telescope-file-browser.nvim" },
     config = function()
@@ -140,7 +140,7 @@ return {
           ['/'] = { function() builtin.current_buffer_fuzzy_find(def_prev()) end, "Search buffer" },
         },
         ['<leader>f'] = {
-          -- TODO: if in git dir, use git_files
+          -- TODO: if in git dir, use git_files?
           f = { function() builtin.find_files(file_prev()) end, "Find file" },
           b = { function() exts.file_browser.file_browser(fb_prev()) end, "File browser" },
           r = { function() builtin.oldfiles(def_prev()) end, "Search recent" },
