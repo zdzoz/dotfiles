@@ -60,8 +60,27 @@ return {
               },
             },
           },
+          help_tags = {
+            mappings = {
+              i = {
+                ["<cr>"] = actions.select_vertical,
+              },
+            },
+          },
           man_pages = {
-            sections = { "ALL" },
+            sections = { "1", "2", "3", "4", "5", "7", "8", "9" },
+            mappings = {
+              i = {
+                ["<cr>"] = actions.select_vertical,
+              },
+            },
+          },
+        },
+        commands = {
+          mappings = {
+            i = {
+              ["<cr>"] = false,
+            },
           },
         },
         extensions = {
@@ -198,5 +217,41 @@ return {
         },
       })
     end,
+  },
+  {
+    'stevearc/dressing.nvim',
+    event = "VeryLazy",
+    opts = {
+      mappings = {
+        n = {
+          ["<Esc>"] = "Close",
+          ["<CR>"] = "Confirm",
+        },
+        i = {
+          ["<C-c>"] = "Close",
+          ["<CR>"] = "Confirm",
+          ["<Up>"] = "HistoryPrev",
+          ["<Down>"] = "HistoryNext",
+          ["<c-p>"] = "HistoryPrev",
+          ["<c-n>"] = "HistoryNext",
+        },
+      },
+      select = {
+        telescope = {
+          sorting_strategy = "ascending",
+          layout_strategy = "vertical",
+          layout_config = {
+            height = 0.4,
+            width = 0.4,
+            vertical = {
+              prompt_position = "top",
+              mirror = true,
+            }
+          },
+          previewer = false,
+          prompt_title = false,
+        },
+      },
+    },
   },
 }
