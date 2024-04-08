@@ -1,8 +1,8 @@
 return {
-  { 'echasnovski/mini.ai',        version = '*', opts = {} }, -- ai
-  { 'echasnovski/mini.surround',  version = '*', opts = {} }, -- surround
-  { 'echasnovski/mini.comment',   version = '*', opts = {} }, -- comment
-  { 'echasnovski/mini.splitjoin', version = '*', opts = {} }, -- splitjoin
+  { 'echasnovski/mini.ai',        event = 'InsertEnter', version = '*', opts = {} }, -- ai
+  { 'echasnovski/mini.surround',  event = 'InsertEnter', version = '*', opts = {} }, -- surround
+  { 'echasnovski/mini.comment',   event = 'InsertEnter', version = '*', opts = {} }, -- comment
+  { 'echasnovski/mini.splitjoin', event = 'InsertEnter', version = '*', opts = {} }, -- splitjoin
   -- indentscope
   -- bufremove
 }

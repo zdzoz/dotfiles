@@ -1,25 +1,31 @@
 return {
-  {
-    'github/copilot.vim',
-    event = 'LspAttach',
-    config = function()
-      vim.cmd[[
-        silent Copilot setup
-        imap <silent><script><expr> <s-cr> copilot#Accept("\<CR>")
-        let g:copilot_no_tab_map = v:true
-      ]]
-    end
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   event = 'LspAttach',
+  --   config = function()
+  --     vim.cmd [[
+  --       silent Copilot setup
+  --       imap <silent><script><expr> <s-cr> copilot#Accept("\<CR>")
+  --       let g:copilot_no_tab_map = v:true
+  --     ]]
+  --   end
+  -- },
   {
     'hrsh7th/nvim-cmp',
     event = "LspAttach",
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path', 'saadparwaiz1/cmp_luasnip', 'L3MON4D3/LuaSnip' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path', 'saadparwaiz1/cmp_luasnip', 'L3MON4D3/LuaSnip', "roobert/tailwindcss-colorizer-cmp.nvim", },
     config = function()
       local luasnip = require 'luasnip'
+
+      require("cmp").config.formatting = {
+      }
 
       -- nvim-cmp setup
       local cmp = require 'cmp'
       cmp.setup {
+        formatting = {
+          format = require("tailwindcss-colorizer-cmp").formatter
+        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)

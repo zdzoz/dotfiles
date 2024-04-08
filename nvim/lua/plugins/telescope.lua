@@ -27,13 +27,14 @@ return {
             "--glob",
             "!**/.git/*",
           },
-          borderchars = {
-            { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-            prompt = { " ", " ", " ", " ", ' ', ' ', " ", " " },
-            results = { " ", " ", " ", " ", " ", " ", " ", " " },
-            preview = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-
-          },
+          -- borderchars = {
+          --   { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+          --   prompt = { "─", "│", "─", "│", '├', '┤', "┴", "└" },
+          --   results = { "─", "│", " ", "│", "┌", "┬", "│", "│" },
+          --   preview = { '─', '│', '─', ' ', '─', '┐', '┘', '─' },
+          -- },
+          results_title = false,
+          prompt_title = false,
           selection_caret = "● ",
           mappings = {
             i = {
@@ -104,6 +105,13 @@ return {
             width = 0.7,
             preview_width = 0.5,
           },
+          borderchars = {
+            { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            prompt = { "─", "│", "─", "│", '├', '┤', "┴", "└" },
+            results = { "─", "│", " ", "│", "┌", "┬", "│", "│" },
+            preview = { '─', '│', '─', ' ', '─', '┐', '┘', '─' },
+          },
+          preview_title = false,
           prompt_title = false,
         }
       end
@@ -133,51 +141,58 @@ return {
         })
       end
 
-      local prompt = "#313244";
-      local main = "#1d1d2d";
-
-      local TelescopePrompt = {
-        TelescopeSelection = {
-          bg = "#242434",
-        },
-        TelescopePromptNormal = {
-          bg = prompt,
-        },
-        TelescopePromptBorder = {
-          bg = prompt,
-        },
-        TelescopePromptTitle = {
-          fg = prompt,
-          bg = prompt,
-        },
-        TelescopePreviewNormal = {
-          -- fg = crust,
-          bg = main,
-        },
-        TelescopePreviewBorder = {
-          fg = main,
-          bg = main,
-        },
-        TelescopePreviewTitle = {
-          fg = main,
-          bg = main,
-        },
-        TelescopeResultsNormal = {
-          bg = main,
-        },
-        TelescopeResultsBorder = {
-          fg = main,
-          bg = main,
-        },
-        TelescopeResultsTitle = {
-          fg = main,
-          bg = main,
-        },
-      }
-
-      for hl, col in pairs(TelescopePrompt) do
-        vim.api.nvim_set_hl(0, hl, col)
-      end
+      -- local prompt = "#313244";
+      -- local prompt = "#1d1d2d";
+      -- local main = "#1d1d2d";
+      --
+      -- local TelescopePrompt = {
+      --   TelescopeSelection = {
+      --     bg = "#242434",
+      --   },
+      --   TelescopePromptNormal = {
+      --     bg = prompt,
+      --   },
+      --   TelescopePromptBorder = {
+      --     bg = prompt,
+      --   },
+      --   TelescopePromptTitle = {
+      --     fg = prompt,
+      --     bg = prompt,
+      --   },
+      --   TelescopeResultsBorder = {
+      --     bg = prompt,
+      --   },
+      --   TelescopePreviewBorder = {
+      --     bg = prompt,
+      --   },
+      -- --   TelescopePreviewNormal = {
+      -- --     -- fg = crust,
+      -- --     bg = main,
+      -- --   },
+      -- --   TelescopePreviewBorder = {
+      -- --     fg = main,
+      -- --     bg = main,
+      -- --   },
+      -- --   TelescopePreviewTitle = {
+      -- --     fg = main,
+      -- --     bg = main,
+      -- --   },
+      -- --   TelescopeResultsNormal = {
+      -- --     bg = main,
+      -- --   },
+      -- --   TelescopeResultsBorder = {
+      -- --     fg = main,
+      -- --     bg = main,
+      -- --   },
+      -- --   TelescopeResultsTitle = {
+      -- --     fg = main,
+      -- --     bg = main,
+      -- --   },
+      -- }
+      --
+      -- for hl, col in pairs(TelescopePrompt) do
+      --   vim.api.nvim_set_hl(0, hl, col)
+      -- end
 
       local wk = require('which-key')
       wk.register({

@@ -1,12 +1,8 @@
 return {
   {
     'mfussenegger/nvim-dap',
-    dependencies = { 'jay-babu/mason-nvim-dap.nvim', 'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text' },
+    dependencies = { 'jay-babu/mason-nvim-dap.nvim', 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text' },
     config = function()
-      local dap = require('dap')
-
-      -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       local handlers = {
         function(config)
           require('mason-nvim-dap').default_setup(config)
