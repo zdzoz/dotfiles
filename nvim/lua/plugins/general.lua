@@ -171,4 +171,5 @@ return {
       vim.keymap.set('n', '<c-l>', ss.move_cursor_right)
     end,
   },
+  { 'JoosepAlviste/nvim-ts-context-commentstring' },
 }

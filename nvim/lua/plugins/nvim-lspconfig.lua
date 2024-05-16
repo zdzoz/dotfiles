@@ -34,6 +34,10 @@ return {
         capabilities = capabilities,
       }
 
+      require('lspconfig').sourcekit.setup {
+        capabilities = capabilities,
+      }
+
       local handlers = {
         function(server_name) -- default handler
           require("lspconfig")[server_name].setup {
@@ -41,9 +45,9 @@ return {
           }
         end,
 
-        -- overrides
+        -- mason overrides
         ["rust_analyzer"] = function()
-            require("rust-tools").setup{}
+          require("rust-tools").setup {}
         end,
 
         ['clangd'] = function()
@@ -120,9 +124,20 @@ return {
           vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = 'Code action' })
           vim.keymap.set('n', 'gR', '<cmd>Telescope lsp_references<cr>', { buffer = ev.buf, desc = 'List references' })
 
-          if vim.bo[ev.buf].filetype == 'python' then
-            vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !black %') end,
-              { buffer = ev.buf, desc = 'Format code' })
+          local lang_t = {
+            ['python'] = function()
+              vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !black %') end,
+                { buffer = ev.buf, desc = 'Format code' })
+            end,
+            ['swift'] = function()
+              vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !swift-format -i %') end,
+                { buffer = ev.buf, desc = 'Format code' })
+            end,
+          }
+
+          local f = lang_t[vim.bo[ev.buf].filetype]
+          if f then
+            f()
           else
             vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = true } end,
               { buffer = ev.buf, desc = 'Format code' })

@@ -31,6 +31,27 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("SWIFT"),
+  pattern = { 'swift' },
+  callback = function()
+    if not vim.g.Session_mkprg then
+      SET_MKPRG("cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build -S . && ninja -C build")
+    end
+    vim.opt.commentstring = "// %s"
+  end,
+})
+
+-- WASM
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("WASM"),
+  pattern = { 'wat' },
+  callback = function()
+    vim.opt.shiftwidth = 4
+    vim.opt.commentstring = ";; %s"
+  end,
+})
+
 -- wrap for markdown only
 vim.cmd [[ au BufEnter *.md set wrap ]]
 vim.cmd [[ au BufLeave *.md set nowrap ]]

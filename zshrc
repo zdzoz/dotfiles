@@ -18,7 +18,7 @@ antidote load
 ################################################################################
 
 # start tmux and attach to any detached session
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$VSCODE_RESOLVING_ENVIRONMENT" ]; then
   if tmux has-session -t main 2>/dev/null && tmux ls | grep main | grep -q attached; then
       # create new session
       exec tmux
@@ -73,3 +73,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Wasmer
+export WASMER_DIR="/Users/zdziarski/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
