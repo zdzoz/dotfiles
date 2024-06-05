@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("SWIFT"),
+  group = augroup("Swift"),
   pattern = { 'swift' },
   callback = function()
     if not vim.g.Session_mkprg then

@@ -130,7 +130,7 @@ return {
                 { buffer = ev.buf, desc = 'Format code' })
             end,
             ['swift'] = function()
-              vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !swift-format -i %') end,
+              vim.keymap.set('n', '<leader>cf', function() vim.cmd('silent !swift-format -i --configuration ' .. vim.fn.stdpath('config') .. '/swift-format-config.json' .. ' %') end,
                 { buffer = ev.buf, desc = 'Format code' })
             end,
           }

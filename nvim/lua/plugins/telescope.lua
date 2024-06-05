@@ -5,7 +5,7 @@ return {
     lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', "nvim-telescope/telescope-file-browser.nvim" },
     config = function()
-      local trouble = require("trouble.providers.telescope")
+      local trouble = require("trouble.sources.telescope")
       local telescope = require("telescope")
       local builtin = require("telescope.builtin")
       local themes = require("telescope.themes")
@@ -38,11 +38,11 @@ return {
           selection_caret = "● ",
           mappings = {
             i = {
-              ["<c-t>"] = trouble.open_with_trouble,
+              ["<c-t>"] = trouble.open,
               ["<c-u>"] = false,
             },
             n = {
-              ["<c-t>"] = trouble.open_with_trouble,
+              ["<c-t>"] = trouble.open,
             },
           },
         },
