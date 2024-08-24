@@ -36,6 +36,7 @@ return {
 
       require('lspconfig').sourcekit.setup {
         capabilities = capabilities,
+        filetypes = { "swift" },
       }
 
       local handlers = {

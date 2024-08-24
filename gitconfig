@@ -25,3 +25,4 @@
 	forceSignAnnotated = false
 [core]
 	editor = vi
+	excludesfile = ~/.gitignore

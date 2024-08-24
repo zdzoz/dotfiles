@@ -1,7 +1,7 @@
 function SET_MKPRG(str)
   if str then
     vim.g.Session_mkprg = str
-    vim.o.makeprg = [[tmux neww "trap 'echo \"\"' INT; ]] .. [[source ~/.zshrc;]] .. vim.g.Session_mkprg .. [[; trap - INT; read -s -k '?Press any key to continue.'"]]
+    vim.o.makeprg = [[tmux neww "trap 'echo \"\"' INT; source ~/.zshrc; ]] .. vim.g.Session_mkprg .. [[; trap - INT; read -s -k '?Press any key to continue.'"]]
   end
 end
 return {

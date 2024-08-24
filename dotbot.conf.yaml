@@ -3,6 +3,7 @@
 ]
 
 - link:
+    ~/.gitignore: gitignore
     ~/.gitconfig: gitconfig
     ~/.gitconfig-work: gitconfig-work
     ~/.gitconfig-school: gitconfig-school

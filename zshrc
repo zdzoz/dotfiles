@@ -33,7 +33,9 @@ export LANG=en_US.UTF-8
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
+export VULKAN_SDK="$HOME/VulkanSDK/1.3.283.0"
+source $VULKAN_SDK/setup-env.sh; clear
+
 export BAT_THEME="base16"
 
 

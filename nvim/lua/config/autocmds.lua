@@ -1,10 +1,3 @@
--- local function set_mkprg(str)
---   if str then
---     vim.g.Session_mkprg = str
---     vim.o.makeprg = [[tmux split -h "trap 'echo \"\"' INT; ]] .. vim.g.Session_mkprg .. [[; trap - INT; read -s -k '?Press any key to continue.'"]]
---   end
--- end
-
 local function augroup(name)
   return vim.api.nvim_create_augroup("config_" .. name, { clear = true })
 end
@@ -23,11 +16,13 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { 'c', 'cpp', 'h', 'hpp', 'objc', 'objcpp', 'cuda', 'proto' },
   callback = function(ev)
     if not vim.g.Session_mkprg then
-      SET_MKPRG("cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build -S . && ninja -C build")
+      SET_MKPRG(
+        "cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build -S . && ninja -C build")
     end
     vim.opt.shiftwidth = 4
     vim.opt.commentstring = "// %s"
-    vim.keymap.set('n', '<leader>cs', '<cmd>ClangdSwitchSourceHeader<cr>', { buffer = ev.buf, desc = 'Switch to source/header' })
+    vim.keymap.set('n', '<leader>cs', '<cmd>ClangdSwitchSourceHeader<cr>',
+      { buffer = ev.buf, desc = 'Switch to source/header' })
   end,
 })
 
@@ -36,7 +31,11 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { 'swift' },
   callback = function()
     if not vim.g.Session_mkprg then
-      SET_MKPRG("cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build -S . && ninja -C build")
+      if vim.fn.file_readable(".run") == 1 then
+        SET_MKPRG("./.run")
+      else
+        SET_MKPRG("swift build && swift run")
+      end
     end
     vim.opt.commentstring = "// %s"
   end,
@@ -118,12 +117,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
-
--- Neorg - Update index on load
--- vim.api.nvim_create_autocmd("FileType", {
---   group = augroup("Neorg"),
---   pattern = { 'notes/index.norg' },
---   callback = function()
---     vim.cmd[[<esc>gg0jd}<cmd>Neorg generate-workspace-summary<cr>]]
---   end,
--- })
