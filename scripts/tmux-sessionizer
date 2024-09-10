@@ -7,6 +7,7 @@ else
         (find ~/Documents/Projects -mindepth 0 -maxdepth 2 -type d ! -name '.*'; \
         find ~/dotfiles -mindepth 0 -maxdepth 0 -type d ! -name '.*'; \
         find -L ~/notes -mindepth 0 -maxdepth 0 -type d ! -name '.*'; \
+        echo "irc"; \
         ) | fzf)
 fi
 

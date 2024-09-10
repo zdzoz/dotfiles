@@ -1,7 +1,6 @@
 # setup oh-my-zsh
 robbyrussell/oh-my-zsh
 robbyrussell/oh-my-zsh path:plugins/git
-robbyrussell/oh-my-zsh path:plugins/npm
 robbyrussell/oh-my-zsh path:plugins/tmux
 
 zsh-users/zsh-autosuggestions

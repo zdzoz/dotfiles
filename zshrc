@@ -47,9 +47,6 @@ alias vim="nvim"
 alias cat="bat"
 alias tms="tmux-sessionizer"
 
-alias vol="volta"
-alias pm="pnpm"
-
 alias proj="cd ~/Documents/Projects"
 alias work="cd ~/Documents/Work"
 alias school="cd ~/Documents/School"
@@ -57,25 +54,3 @@ alias school="cd ~/Documents/School"
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-# thefuck
-eval $(thefuck --alias)
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Wasmer
-export WASMER_DIR="/Users/zdziarski/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
