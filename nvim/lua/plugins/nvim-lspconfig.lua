@@ -35,7 +35,6 @@ return {
       }
 
       require('lspconfig').sourcekit.setup {
-        cmd = { "/Applications/Xcode-beta16.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" }, -- TODO: remove once xcode 16 released
         capabilities = capabilities,
         filetypes = { "swift" },
       }

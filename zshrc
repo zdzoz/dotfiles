@@ -44,8 +44,10 @@ export BAT_THEME="base16"
 ################################################################################
 
 alias vim="nvim"
+alias v="nvim"
 alias cat="bat"
 alias tms="tmux-sessionizer"
+alias leaks="MallocStackLogging=1 leaks"
 
 alias proj="cd ~/Documents/Projects"
 alias work="cd ~/Documents/Work"

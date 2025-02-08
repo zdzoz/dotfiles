@@ -3,13 +3,14 @@
 ]
 
 - link:
+    ~/.aerospace.toml: aerospace.toml
+    ~/.config/nvim: nvim
     ~/.gitignore: gitignore
     ~/.gitconfig: gitconfig
     ~/.gitconfig-work: gitconfig-work
     ~/.gitconfig-school: gitconfig-school
     ~/.tmux: tmux
     ~/.tmux.conf: tmux.conf
-    ~/.config/nvim: nvim
     ~/.zshrc: zshrc
     ~/.zsh_plugins.txt: zsh_plugins.txt
     /usr/local/bin/tmux-sessionizer: scripts/tmux-sessionizer
