@@ -195,42 +195,72 @@ return {
       -- end
 
       local wk = require('which-key')
-      wk.register({
-        ['<leader>'] = {
-          ['<leader>'] = { function() builtin.find_files(file_prev()) end, 'Find files' },
-          [','] = { function() builtin.buffers(file_prev()) end, 'Change buffer' },
-          ['.'] = { function() exts.file_browser.file_browser(fb_prev()) end, "File browser" },
-          ['/'] = { function() builtin.current_buffer_fuzzy_find(def_prev()) end, "Search buffer" },
-        },
-        ['<leader>f'] = {
-          -- TODO: if in git dir, use git_files?
-          f = { function() builtin.find_files(file_prev()) end, "Find file" },
-          b = { function() exts.file_browser.file_browser(fb_prev()) end, "File browser" },
-          r = { function() builtin.oldfiles(def_prev()) end, "Search recent" },
-        },
-        ['<leader>b'] = {
-          b = { function() builtin.buffers(file_prev()) end, 'Change buffer' },
-          f = { function() builtin.current_buffer_fuzzy_find() end, "Search buffer" },
-        },
-        ['<leader>h'] = {
-          h = { function() builtin.help_tags(def_prev()) end, 'Help' },
-          x = { function() builtin.commands(def_prev()) end, 'Commands' },
-          k = { function() builtin.keymaps(def_prev()) end, 'Keymaps' },
-          o = { function() builtin.vim_options(def_prev()) end, 'Options' },
-          m = { function() builtin.man_pages(def_prev()) end, 'Man pages' },
-        },
-        ['<leader>g'] = {
-          f = { function() builtin.git_files(file_prev()) end, 'Git files' },
-          b = { function() builtin.git_branches(file_prev()) end, 'Git branches' },
-        },
-        ['<leader>s'] = {
-          f = { function() builtin.live_grep(def_prev()) end, 'Search files' },
-          -- w = { function() builtin.grep_string({ search = vim.fn.input("Search Word: ") }) end, 'Search word' },
-          r = { function() builtin.oldfiles(def_prev()) end, "Search recent" },
-          d = { function() builtin.diagnostics(file_prev()) end, "Search diagnostics" },
-          b = { function() builtin.current_buffer_fuzzy_find(def_prev()) end, "Search buffer" },
-        },
+      wk.add({
+        { "<leader><leader>", function() builtin.find_files(file_prev()) end,               desc = 'Find files' },
+        { '<leader>,',        function() builtin.buffers(file_prev()) end,                  desc = 'Change buffer' },
+        { '<leader>.',        function() exts.file_browser.file_browser(fb_prev()) end,     desc = "File browser" },
+        { '<leader>/',        function() builtin.current_buffer_fuzzy_find(def_prev()) end, desc = "Search buffer" },
+
+        -- TODO: if in git dir, use git_files?
+        { '<leader>ff',       function() builtin.find_files(file_prev()) end,               desc = "Find file" },
+        { '<leader>fb',       function() exts.file_browser.file_browser(fb_prev()) end,     desc = "File browser" },
+        { '<leader>fr',       function() builtin.oldfiles(def_prev()) end,                  desc = "Search recent" },
+
+        { '<leader>bb',       function() builtin.buffers(file_prev()) end,                  desc = 'Change buffer' },
+        { '<leader>bf',       function() builtin.current_buffer_fuzzy_find() end,           desc = "Search buffer" },
+
+        { '<leader>hh',       function() builtin.help_tags(def_prev()) end,                 desc = 'Help' },
+        { '<leader>hx',       function() builtin.commands(def_prev()) end,                  desc = 'Commands' },
+        { '<leader>hk',       function() builtin.keymaps(def_prev()) end,                   desc = 'Keymaps' },
+        { '<leader>ho',       function() builtin.vim_options(def_prev()) end,               desc = 'Options' },
+        { '<leader>hm',       function() builtin.man_pages(def_prev()) end,                 desc = 'Man pages' },
+
+        { '<leader>gf',       function() builtin.git_files(file_prev()) end,                desc = 'Git files' },
+        { '<leader>gb',       function() builtin.git_branches(file_prev()) end,             desc = 'Git branches' },
+
+        { '<leader>sf', function() builtin.live_grep(def_prev()) end, desc= 'Search files' },
+        { '<leader>sr', function() builtin.oldfiles(def_prev()) end, desc= "Search recent" },
+        { '<leader>sd', function() builtin.diagnostics(file_prev()) end, desc= "Search diagnostics" },
+        { '<leader>sb', function() builtin.current_buffer_fuzzy_find(def_prev()) end, desc= "Search buffer" },
+        -- { '<leader>sw', function() builtin.grep_string({ search = vim.fn.input("Search Word: ") }) end, desc= 'Search word' },
       })
+
+      -- wk.register({
+        -- ['<leader>'] = {
+        --   ['<leader>'] = { function() builtin.find_files(file_prev()) end, 'Find files' },
+        --   [','] = { function() builtin.buffers(file_prev()) end, 'Change buffer' },
+        --   ['.'] = { function() exts.file_browser.file_browser(fb_prev()) end, "File browser" },
+        --   ['/'] = { function() builtin.current_buffer_fuzzy_find(def_prev()) end, "Search buffer" },
+        -- },
+        -- ['<leader>f'] = {
+        --   -- TODO: if in git dir, use git_files?
+        --   f = { function() builtin.find_files(file_prev()) end, "Find file" },
+        --   b = { function() exts.file_browser.file_browser(fb_prev()) end, "File browser" },
+        --   r = { function() builtin.oldfiles(def_prev()) end, "Search recent" },
+        -- },
+        -- ['<leader>b'] = {
+        --   b = { function() builtin.buffers(file_prev()) end, 'Change buffer' },
+        --   f = { function() builtin.current_buffer_fuzzy_find() end, "Search buffer" },
+        -- },
+        -- ['<leader>h'] = {
+        --   h = { function() builtin.help_tags(def_prev()) end, 'Help' },
+        --   x = { function() builtin.commands(def_prev()) end, 'Commands' },
+        --   k = { function() builtin.keymaps(def_prev()) end, 'Keymaps' },
+        --   o = { function() builtin.vim_options(def_prev()) end, 'Options' },
+        --   m = { function() builtin.man_pages(def_prev()) end, 'Man pages' },
+        -- },
+        -- ['<leader>g'] = {
+        --   f = { function() builtin.git_files(file_prev()) end, 'Git files' },
+        --   b = { function() builtin.git_branches(file_prev()) end, 'Git branches' },
+        -- },
+        -- ['<leader>s'] = {
+        --   f = { function() builtin.live_grep(def_prev()) end, 'Search files' },
+        --   -- w = { function() builtin.grep_string({ search = vim.fn.input("Search Word: ") }) end, 'Search word' },
+        --   r = { function() builtin.oldfiles(def_prev()) end, "Search recent" },
+        --   d = { function() builtin.diagnostics(file_prev()) end, "Search diagnostics" },
+        --   b = { function() builtin.current_buffer_fuzzy_find(def_prev()) end, "Search buffer" },
+        -- },
+      -- })
     end,
   },
   {

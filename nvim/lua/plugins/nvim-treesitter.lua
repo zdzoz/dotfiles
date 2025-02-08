@@ -57,10 +57,14 @@ return {
       })
 
       -- overwrite which-key name
-      require('which-key').register({
-        [']s'] = { name = 'Next Scope' },
-        ['[s'] = { name = 'Previous Scope' }
+      require('which-key').add({
+        { ']s', group = 'Next Scope' },
+        { '[s', group = 'Previous Scope' }
       })
+      -- require('which-key').register({
+      --   [']s'] = { name = 'Next Scope' },
+      --   ['[s'] = { name = 'Previous Scope' }
+      -- })
     end
   },
   {
