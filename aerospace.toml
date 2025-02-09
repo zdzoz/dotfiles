@@ -218,6 +218,15 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
+if.workspace = 'X'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = 'layout tiling'
+
+[[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
 run = 'layout floating'
 
