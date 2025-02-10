@@ -117,28 +117,30 @@ return {
       end
 
       local file_prev = function()
-        return themes.get_ivy({
-          layout_config = {
-            height = 0.25
-          },
-          border = false,
-          previewer = false,
-          prompt_title = false,
-        })
+        return def_prev()
+        -- return themes.get_ivy({
+        --   layout_config = {
+        --     height = 0.25
+        --   },
+        --   border = false,
+        --   previewer = false,
+        --   prompt_title = false,
+        -- })
       end
 
       local fb_prev = function()
-        return themes.get_ivy({
-          path = "%:p:h",
-          select_buffer = true,
-
-          layout_config = {
-            height = 0.25
-          },
-          border = false,
-          previewer = false,
-          prompt_title = false,
-        })
+        return def_prev()
+        -- return themes.get_ivy({
+        --   path = "%:p:h",
+        --   select_buffer = true,
+        --
+        --   layout_config = {
+        --     height = 0.25
+        --   },
+        --   border = false,
+        --   previewer = false,
+        --   prompt_title = false,
+        -- })
       end
 
       -- local prompt = "#313244";
