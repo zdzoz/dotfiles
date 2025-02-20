@@ -90,8 +90,8 @@ outer.right =      16
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-alt-enter = 'exec-and-forget open -n /Applications/iTerm.app'
-cmd-enter = 'exec-and-forget open -n /Applications/iTerm.app'
+alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
+cmd-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -108,8 +108,8 @@ alt-shift-l = 'move right'
 alt-shift-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-alt-shift-minus = 'resize smart -50'
-alt-shift-equal = 'resize smart +50'
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
@@ -208,7 +208,20 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+if.app-id = 'com.valvesoftware.steam'
+run = 'move-node-to-workspace S'
+
+[[on-window-detected]]
 if.workspace = 'X'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.workspace = 'S'
 check-further-callbacks = true
 run = 'layout floating'
 
@@ -217,7 +230,15 @@ if.app-id = 'com.googlecode.iterm2'
 run = 'layout tiling'
 
 [[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'layout tiling'
+
+[[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.codeweavers.CrossOver'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -225,9 +246,9 @@ if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.MobileSMS'
+if.app-id = 'com.apple.FaceTime'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.codeweavers.CrossOver'
+if.app-id = 'com.apple.ScreenSharing'
 run = 'layout floating'

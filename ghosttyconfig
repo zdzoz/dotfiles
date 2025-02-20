@@ -1,0 +1,5 @@
+theme = catppuccin-mocha
+quit-after-last-window-closed = true
+
+font-family = Liga SFMono Nerd Font
+font-size = 14

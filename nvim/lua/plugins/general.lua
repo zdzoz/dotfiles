@@ -145,20 +145,19 @@ return {
   },
   {
     'mrjones2014/smart-splits.nvim',
-    event = "VeryLazy",
     config = function()
       local ss = require('smart-splits')
       ss.setup({
         default_amount = 10,
       })
-      vim.keymap.set('n', '<c-,>', ss.resize_left)
-      vim.keymap.set('n', '<c-.>', ss.resize_right)
-      vim.keymap.set('n', '<c-->', ss.resize_down)
-      vim.keymap.set('n', '<c-=>', ss.resize_up)
-      vim.keymap.set('n', '<c-h>', ss.move_cursor_left)
-      vim.keymap.set('n', '<c-j>', ss.move_cursor_down)
-      vim.keymap.set('n', '<c-k>', ss.move_cursor_up)
-      vim.keymap.set('n', '<c-l>', ss.move_cursor_right)
+      vim.keymap.set('n', '<c-]>', ss.resize_left, { desc = "Resize left" })
+      vim.keymap.set('n', '<c-\\>', ss.resize_right, { desc = "Resize right" })
+      vim.keymap.set('n', '<c-->', ss.resize_down, { desc = "Resize down" })
+      vim.keymap.set('n', '<c-=>', ss.resize_up, { desc = "Resize up" })
+      vim.keymap.set('n', '<c-h>', ss.move_cursor_left, { desc = "Move cursor left" })
+      vim.keymap.set('n', '<c-l>', ss.move_cursor_right, { desc = "Move cursor right" })
+      vim.keymap.set('n', '<c-k>', ss.move_cursor_up, { desc = "Move cursor up" })
+      vim.keymap.set('n', '<c-j>', ss.move_cursor_down, { desc = "Move cursor down" })
     end,
   },
   { 'JoosepAlviste/nvim-ts-context-commentstring' },

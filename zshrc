@@ -30,13 +30,12 @@ fi
 
 export LANG=en_US.UTF-8
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-export VULKAN_SDK="$HOME/VulkanSDK/1.3.283.0"
-source $VULKAN_SDK/setup-env.sh; clear
+source $HOME/VulkanSDK/1.4.304.1/setup-env.sh; clear
 
 export BAT_THEME="base16"
+
+export EDITOR="vi"
+set -o vi
 
 
 ################################################################################
