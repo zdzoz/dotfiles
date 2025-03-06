@@ -10,7 +10,6 @@ return {
   {
     'rmagatti/auto-session',
     lazy = false,
-    dependencies = { 'nvim-telescope/telescope.nvim' },
     config = function()
       vim.o.sessionoptions = "blank,buffers,curdir,folds,globals,help,tabpages,winsize,winpos,terminal,localoptions"
       require("auto-session").setup {

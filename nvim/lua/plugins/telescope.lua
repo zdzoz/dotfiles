@@ -1,7 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.4',
+    tag = '0.1.8',
     lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', "nvim-telescope/telescope-file-browser.nvim" },
     config = function()
@@ -216,6 +216,7 @@ return {
         { '<leader>hk',       function() builtin.keymaps(def_prev()) end,                   desc = 'Keymaps' },
         { '<leader>ho',       function() builtin.vim_options(def_prev()) end,               desc = 'Options' },
         { '<leader>hm',       function() builtin.man_pages(def_prev()) end,                 desc = 'Man pages' },
+        { '<leader>hc',       function() builtin.highlights(def_prev()) end,                 desc = 'Colors (highlights)' },
 
         { '<leader>gf',       function() builtin.git_files(file_prev()) end,                desc = 'Git files' },
         { '<leader>gb',       function() builtin.git_branches(file_prev()) end,             desc = 'Git branches' },

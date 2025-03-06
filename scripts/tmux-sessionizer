@@ -3,12 +3,10 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$( \
-        (find ~/Documents/Projects -mindepth 0 -maxdepth 2 -type d ! -name '.*'; \
+    selected=$(( \
+        find ~/Documents/Projects -mindepth 0 -maxdepth 2 -type d ! -name '.*'; \
         find ~/dotfiles -mindepth 0 -maxdepth 0 -type d ! -name '.*'; \
-        find -L ~/notes -mindepth 0 -maxdepth 0 -type d ! -name '.*'; \
-        echo "irc"; \
-        ) | fzf)
+    ) | fzf)
 fi
 
 if [[ -z $selected ]]; then
