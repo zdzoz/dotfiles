@@ -5,6 +5,7 @@
 - link:
     ~/.aerospace.toml: aerospace.toml
     ~/.config/ghostty/config: ghosttyconfig
+    ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
     ~/.gitignore: gitignore
     ~/.gitconfig: gitconfig
@@ -17,6 +18,7 @@
     /usr/local/bin/tmux-sessionizer: scripts/tmux-sessionizer
 
 - create:
+    - ~/.config
     - ~/Documents
     - ~/Documents/Projects
     - ~/Documents/Work

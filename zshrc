@@ -28,7 +28,12 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   fi
 fi
 
+
+## EXPORTS ##
+
 export LANG=en_US.UTF-8
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
 source $HOME/VulkanSDK/1.4.304.1/setup-env.sh; clear
 
@@ -47,6 +52,7 @@ alias v="nvim"
 alias cat="bat"
 alias tms="tmux-sessionizer"
 alias leaks="MallocStackLogging=1 leaks"
+alias lz="lazygit"
 
 alias proj="cd ~/Documents/Projects"
 alias work="cd ~/Documents/Work"

@@ -59,9 +59,9 @@ return {
               '--background-index',
               '--clang-tidy',
               '--completion-style=bundled',
-              "--offset-encoding=utf-16",
+              '--offset-encoding=utf-16',
               -- '--header-insertion=iwyu',
-              "--header-insertion=never",
+              '--header-insertion=never',
               '--pch-storage=memory',
               -- '--clang-tidy-checks=-*,bugprone-*,clang-analyzer-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*'
               '--fallback-style=WebKit',
@@ -132,8 +132,10 @@ return {
             end,
             ['swift'] = function()
               vim.keymap.set('n', '<leader>cf',
-                function() vim.cmd('silent !swift-format -i --configuration ' ..
-                  vim.fn.stdpath('config') .. '/swift-format-config.json' .. ' %') end,
+                function()
+                  vim.cmd('silent !swift-format -i --configuration ' ..
+                    vim.fn.stdpath('config') .. '/swift-format-config.json' .. ' %')
+                end,
                 { buffer = ev.buf, desc = 'Format code' })
             end,
           }
