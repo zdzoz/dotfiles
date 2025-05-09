@@ -1,0 +1,56 @@
+let mapleader=" "
+let maplocalleader=","
+
+""" plugins
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'echasnovski/mini.ai'
+
+""" options
+set surround
+set commentary
+set which-key
+set mini-ai
+
+set scrolloff=4
+set sidescrolloff=8
+set clipboard=unnamedplus
+
+set smartcase
+
+set number
+set relativenumber
+set ignorecase
+
+set timeoutlen=200
+set showmode
+
+""" keymaps
+nnoremap J mzJ`z
+nnoremap , @@
+nnoremap <Esc> :noh<CR><Esc>
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
+xnoremap <expr> j v:count == 0 ? 'gj' : 'j'
+nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
+xnoremap <expr> k v:count == 0 ? 'gk' : 'k'
+
+nnoremap <expr> n v:searchforward ? 'n' : 'N'
+xnoremap <expr> n v:searchforward ? 'n' : 'N'
+onoremap <expr> n v:searchforward ? 'n' : 'N'
+nnoremap <expr> N v:searchforward ? 'N' : 'n'
+xnoremap <expr> N v:searchforward ? 'N' : 'n'
+onoremap <expr> N v:searchforward ? 'N' : 'n'
+
+inoremap <Esc> <Esc>
+inoremap kj <Esc>
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ; ;<C-g>u
+
+xnoremap < <gv
+xnoremap > >gv

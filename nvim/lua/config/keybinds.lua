@@ -87,6 +87,3 @@ vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" 
 
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
-
--- Neorg
-vim.keymap.set('n', '<leader>n', '<cmd>Neorg<cr>', { desc = 'Neorg' })

@@ -4,7 +4,8 @@
 
 - link:
     ~/.aerospace.toml: aerospace.toml
-    ~/.config/ghostty/config: ghosttyconfig
+    ~/.config/ghostty: ghostty
+    ~/.config/ideavim: ideavim
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
     ~/.gitignore: gitignore
