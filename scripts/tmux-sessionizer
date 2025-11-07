@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$(( \
-        find ~/Documents/Projects -mindepth 0 -maxdepth 2 -type d ! -name '.*'; \
+        find ~/dev -mindepth 0 -maxdepth 2 -type d ! -name '.*'; \
         find ~/dotfiles -mindepth 0 -maxdepth 0 -type d ! -name '.*'; \
     ) | fzf)
 fi

@@ -2,14 +2,6 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("config_" .. name, { clear = true })
 end
 
--- automatically close terminal
--- autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
-vim.api.nvim_create_autocmd("TermClose", {
-  callback = function()
-    vim.cmd("bwipeout")
-  end
-})
-
 -- C
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("C"),
@@ -21,7 +13,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end
     vim.opt.shiftwidth = 4
     vim.opt.commentstring = "// %s"
-    vim.keymap.set('n', '<leader>cs', '<cmd>ClangdSwitchSourceHeader<cr>',
+    vim.keymap.set('n', '<leader>cs', '<cmd>LspClangdSwitchSourceHeader<cr>',
       { buffer = ev.buf, desc = 'Switch to source/header' })
   end,
 })

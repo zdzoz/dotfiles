@@ -17,6 +17,56 @@ return {
       { '<leader>cM', '<cmd>Mason<cr>', desc = 'Mason' },
     },
     config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      -- GLSL
+      vim.lsp.config('glsl_analyzer', {
+        capabilities = capabilities,
+      })
+
+      -- sourcekit
+      vim.lsp.config('sourcekit', {
+        capabilities = capabilities,
+        filetypes = { "swift" },
+      })
+
+      -- CLANGD
+      vim.lsp.config('clangd', {
+        capabilities = capabilities,
+        cmd = {
+          'clangd',
+          '--background-index',
+          '--clang-tidy',
+          '--completion-style=bundled',
+          '--offset-encoding=utf-16',
+          -- '--header-insertion=iwyu',
+          '--header-insertion=never',
+          '--pch-storage=memory',
+          -- '--clang-tidy-checks=-*,bugprone-*,clang-analyzer-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*'
+          '--fallback-style=WebKit',
+        },
+      })
+
+      -- LUA
+      vim.lsp.config('lua_ls', {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT',
+            },
+            telemetry = { enable = false },
+            hint = { enable = true },
+            diagnostics = {
+              globals = {
+                'vim',
+                'require',
+              },
+            },
+          },
+        },
+      })
+
       require('mason').setup({
         ui = {
           icons = {
@@ -27,69 +77,10 @@ return {
         },
       })
 
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      -- GLSL
-      require('lspconfig').glsl_analyzer.setup {
-        capabilities = capabilities,
-      }
-
-      require('lspconfig').sourcekit.setup {
-        capabilities = capabilities,
-        filetypes = { "swift" },
-      }
-
-      local handlers = {
-        function(server_name) -- default handler
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities,
-          }
-        end,
-
-        -- mason overrides
-        ["rust_analyzer"] = function()
-          require("rust-tools").setup {}
-        end,
-
-        ['clangd'] = function()
-          require('lspconfig').clangd.setup {
-            capabilities = capabilities,
-            cmd = {
-              'clangd',
-              '--background-index',
-              '--clang-tidy',
-              '--completion-style=bundled',
-              '--offset-encoding=utf-16',
-              -- '--header-insertion=iwyu',
-              '--header-insertion=never',
-              '--pch-storage=memory',
-              -- '--clang-tidy-checks=-*,bugprone-*,clang-analyzer-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*'
-              '--fallback-style=WebKit',
-            },
-          }
-        end,
-
-        ["lua_ls"] = function()
-          require("lspconfig").lua_ls.setup {
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                telemetry = { enable = false },
-                diagnostics = {
-                  globals = { "vim" }
-                },
-                hint = { enable = true },
-              }
-            }
-          }
-        end,
-      }
-
       require('mason-lspconfig').setup({
         ensure_installed = {
           'clangd', 'lua_ls', 'pyright', 'rust_analyzer'
         },
-        handlers = handlers
       })
 
       vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })

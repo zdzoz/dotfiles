@@ -1,5 +1,5 @@
 #theme = catppuccin-mocha
-theme = rose-pine
+theme = Rose Pine
 quit-after-last-window-closed = true
 
 font-family = Liga SFMono Nerd Font

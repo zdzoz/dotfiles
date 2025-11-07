@@ -42,7 +42,7 @@ return {
       vim.cmd [[cnoreabbrev <expr> m getcmdtype() == ":" && getcmdline() == 'm' ? 'silent make' : 'm']]
       local wk = require('which-key')
       wk.add({
-        { '<leader>ss', require("auto-session.session-lens").search_session, desc = 'Session' },
+        { '<leader>ss', require("auto-session").search, desc = 'Session' },
         { '<leader>sn', '<cmd>silent !tmux neww tmux-sessionizer<cr>',       desc = 'New Session' },
         { '<leader>m',  '<cmd>silent make<cr>',                              desc = 'Make' },
         {

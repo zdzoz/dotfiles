@@ -20,8 +20,8 @@
 
 - create:
     - ~/.config
+    - ~/dev
     - ~/Documents
-    - ~/Documents/Projects
     - ~/Documents/Work
 
 - shell:
