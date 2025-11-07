@@ -24,6 +24,8 @@ return {
       local wk = require('which-key')
       wk.add({
         { "<leader>d",  group = "debug" },
+        { "<leader>b", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" },
+        -- { "<leader>B", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" }, TODO: allow conditional breakpoints
         { "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" },
         { "<leader>dc", "<cmd>lua require('dap').continue()<CR>",          desc = "continue" },
         { "<leader>dd", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" },
@@ -33,6 +35,8 @@ return {
         { "<leader>dO", "<cmd>lua require('dap').step_out()<CR>",          desc = "step out" },
         { "<leader>dr", "<cmd>lua require('dap').repl.open()<CR>",         desc = "open repl" },
         { "<leader>dt", "<cmd>lua require('dapui').toggle()<CR>",          desc = "toggle ui" },
+        { "<leader>m", require('dap').continue,                             desc = "Run" },
+        { "<leader>M", require('dap').run_last,                            desc = "Run last build" },
       })
     end,
   },
