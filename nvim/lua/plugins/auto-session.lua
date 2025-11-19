@@ -1,10 +1,10 @@
--- function SET_MKPRG(str)
---   if str then
---     vim.g.Session_mkprg = str
---     vim.o.makeprg = [[tmux neww "trap 'echo \"\"' INT; source ~/.zshrc; ]] ..
---         vim.g.Session_mkprg .. [[; trap - INT; read -s -k '?Press any key to continue.'"]]
---   end
--- end
+function SET_MKPRG(str)
+  if str then
+    vim.g.Session_mkprg = str
+    vim.o.makeprg = [[tmux neww "trap 'echo \"\"' INT; source ~/.zshrc; ]] ..
+        vim.g.Session_mkprg .. [[; trap - INT; read -s -k '?Press any key to continue.'"]]
+  end
+end
 
 return {
   {
@@ -62,20 +62,20 @@ return {
         end,
         -- END -> Saving breakpoints
 
-        -- pre_save_cmds = {
-        --   function()
-        --     if not vim.g.Session_mkprg then
-        --       SET_MKPRG(vim.o.makeprg)
-        --     end
-        --   end
-        -- },
-        -- post_restore_cmds = {
-        --   function()
-        --     if vim.g.Session_mkprg then
-        --       SET_MKPRG(vim.g.Session_mkprg)
-        --     end
-        --   end,
-        -- },
+        pre_save_cmds = {
+          function()
+            if not vim.g.Session_mkprg then
+              SET_MKPRG(vim.o.makeprg)
+            end
+          end
+        },
+        post_restore_cmds = {
+          function()
+            if vim.g.Session_mkprg then
+              SET_MKPRG(vim.g.Session_mkprg)
+            end
+          end,
+        },
 
         auto_session_suppress_dirs = { "~/", "~/Documents/Projects", "~/Downloads", "/" },
         session_lens = {
@@ -91,16 +91,16 @@ return {
       wk.add({
         { '<leader>ss', require("auto-session").search,                desc = 'Session' },
         { '<leader>sn', '<cmd>silent !tmux neww tmux-sessionizer<cr>', desc = 'New Session' },
-        -- { '<leader>m',  '<cmd>silent make<cr>',                        desc = 'Make' },
-        -- {
-        --   '<leader>cm',
-        --   function()
-        --     vim.ui.input({ prompt = 'Make: ', default = vim.g.Session_mkprg }, function(input)
-        --       SET_MKPRG(input)
-        --     end)
-        --   end,
-        --   desc = 'Change makeprg'
-        -- },
+        { '<leader>M',  '<cmd>silent make<cr>',                        desc = 'Make' },
+        {
+          '<leader>cm',
+          function()
+            vim.ui.input({ prompt = 'Make: ', default = vim.g.Session_mkprg }, function(input)
+              SET_MKPRG(input)
+            end)
+          end,
+          desc = 'Change makeprg'
+        },
       })
     end
   },

@@ -2,6 +2,18 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("config_" .. name, { clear = true })
 end
 
+-- automatically close dap-terminal on quitting neovim
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name:match("%[dap%-terminal%]") then
+        pcall(vim.api.nvim_buf_delete, buf, { force = true })
+      end
+    end
+  end,
+})
+
 -- C
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("C"),
