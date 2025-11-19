@@ -1,0 +1,16 @@
+- clean: [
+    '~',
+]
+
+- link:
+    ~/AppData/Local/lazygit: lazygit
+    ~/AppData/Local/nvim: nvim
+    ~/.gitconfig: gitconfig
+    ~/.ideavimrc: ideavim/ideavimrc
+
+- create:
+    - ~/dev
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [nvim --headless "+Lazy! sync" +qa]

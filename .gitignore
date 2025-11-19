@@ -1,3 +1,4 @@
 .DS_Store
 tmux
 packer_compiled.lua
+lazygit/state.yml

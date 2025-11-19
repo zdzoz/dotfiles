@@ -8,10 +8,8 @@
     ~/.config/ideavim: ideavim
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
-    ~/.gitignore: gitignore
     ~/.gitconfig: gitconfig
     ~/.gitconfig-work: gitconfig-work
-    ~/.gitconfig-school: gitconfig-school
     ~/.tmux: tmux
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
