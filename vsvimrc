@@ -1,0 +1,49 @@
+set novsvim_useeditordefaults
+
+set number
+set relativenumber
+set ignorecase
+set smartcase
+set hlsearch
+set showcmd
+set clipboard=unnamedplus
+set scrolloff=8
+
+let mapleader=" "
+
+nmap <c-o> :vsc View.NavigateBackward<cr>
+nmap <c-i> :vsc View.NavigateForward<cr>
+
+" copy/paste
+nnoremap y "+y
+nnoremap Y "+Y
+vnoremap y "+y
+vnoremap <c-c> "+y
+
+nnoremap d "+d
+vnoremap d "+d
+nnoremap D "+D
+vnoremap <c-x> "+d
+
+" save
+nnoremap <c-s> :w<cr>
+inoremap <c-s> <esc>:w<cr>a
+
+" comment
+nnoremap gcc :vsc Edit.ToggleLineComment<cr>
+
+" switch header/source
+nnoremap <leader>cs :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<cr>
+nnoremap <leader>` :vsc Window.NextDocumentWindowNav<cr>
+
+" find file
+nnoremap <leader><leader> :vsc Edit.GoToFile<cr>
+
+" rename
+nnoremap <leader>rn :vsc Refactor.Rename<cr>
+
+" peek definition
+nnoremap <s-k> :vsc Edit.PeekDefinition<cr>
+
+" prevent auto highlighting when going to definition
+nnoremap gd gd<esc>

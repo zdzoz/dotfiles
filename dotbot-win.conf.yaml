@@ -7,6 +7,7 @@
     ~/AppData/Local/nvim: nvim
     ~/.gitconfig: gitconfig
     ~/.ideavimrc: ideavim/ideavimrc
+    ~/.vsvimrc: vsvimrc
 
 - create:
     - ~/dev
