@@ -5,6 +5,7 @@
 - link:
     ~/AppData/Local/lazygit: lazygit
     ~/AppData/Local/nvim: nvim
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1: powershellprofile.ps1
     ~/.gitconfig: gitconfig
     ~/.ideavimrc: ideavim/ideavimrc
     ~/.vsvimrc: vsvimrc
