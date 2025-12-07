@@ -1,7 +1,9 @@
+$env:POWERSHELL_TELEMETRY_OPTOUT=1
 cd $HOME
 
 function open { explorer.exe $args }
 function dev { Set-Location $HOME\dev }
+function which { Get-Command $args }
 function lg { lazygit }
 
 # perforce
