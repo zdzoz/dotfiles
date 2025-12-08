@@ -50,20 +50,58 @@ return {
       -- LUA
       vim.lsp.config('lua_ls', {
         capabilities = capabilities,
-        settings = {
-          Lua = {
+        on_init = function(client)
+          if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if
+                path ~= vim.fn.stdpath('config')
+                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+            then
+              return
+            end
+          end
+
+          local libs = {}
+
+          local buf = vim.api.nvim_get_current_buf()
+          local name = vim.api.nvim_buf_get_name(buf)
+
+          if name:match("premake5%.lua$") then
+            table.insert(libs, vim.fs.joinpath(vim.fn.stdpath("config"), "premake5-definitions.lua"))
+          end
+
+          local unpack = table.unpack or unpack
+
+          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
             runtime = {
               version = 'LuaJIT',
+              path = {
+                'lua/?.lua',
+                'lua/?/init.lua',
+              },
             },
             telemetry = { enable = false },
             hint = { enable = true },
-            diagnostics = {
-              globals = {
-                'vim',
-                'require',
-              },
-            },
-          },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME,
+                unpack(libs)
+              }
+            }
+          })
+        end,
+        on_new_config = function(new_config, root_dir)
+          local buf = vim.api.nvim_get_current_buf()
+          local name = vim.api.nvim_buf_get_name(buf)
+
+          if name:match("premake5%.lua$") then
+            table.insert(new_config.settings.Lua.workspace.library, vim.fs.joinpath(vim.fn.stdpath("config"), "premake5-definitions.lua"))
+          end
+
+        end,
+        settings = {
+          Lua = {},
         },
       })
 
@@ -79,7 +117,7 @@ return {
 
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'clangd', 'lua_ls', 'pyright', 'rust_analyzer'
+          'clangd', 'lua_ls', 'pyright'
         },
       })
 

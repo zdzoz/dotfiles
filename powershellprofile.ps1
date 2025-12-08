@@ -4,6 +4,7 @@ cd $HOME
 function open { explorer.exe $args }
 function dev { Set-Location $HOME\dev }
 function which { Get-Command $args }
+function touch { New-Item $args }
 function lg { lazygit }
 
 # perforce
