@@ -64,8 +64,7 @@ return {
         { "<leader>b",  "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" },
         -- { "<leader>B", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" }, TODO: allow conditional breakpoints
         { "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" },
-        { "<leader>dc", "<cmd>lua require('dap').continue()<CR>",          desc = "continue" },
-        { "<leader>dd", "<cmd>lua require('dap').toggle_breakpoint()<CR>", desc = "toggle breakpoint" },
+        { "<leader>dc", dap.continue,                                      desc = "Run Debug" },
         { "<leader>di", "<cmd>lua require('dap').step_into()<CR>",         desc = "step into" },
         { "<leader>do", "<cmd>lua require('dap').step_over()<CR>",         desc = "step over" },
         { "<leader>dO", "<cmd>lua require('dap').step_out()<CR>",          desc = "step out" },
@@ -78,8 +77,8 @@ return {
           end,
           desc = "Stop"
         },
-        { "<leader>m",  dap.continue,                 desc = "Run" },
-        -- { "<leader>M",  dap.run_last,                             desc = "Run last build" }, // conflicts with :make
+        { "<leader>M",  dap.continue,                 desc = "Run Debug" },
+        { "<leader>z",  dap.run_last,                 desc = "Run last" },
 
 
         { "<leader>du", require('dap-view').toggle,   desc = "toggle ui" },
@@ -88,7 +87,8 @@ return {
         { "<leader>dt", require('dapui').toggle,      desc = "toggle ui" },
         { "<leader>de", require('dapui').eval,        desc = "eval" },
 
-        { "<leader>o",  require('overseer').toggle,   desc = "Toggle overseer" }
+        { "<leader>o",  require('overseer').toggle,   desc = "Toggle overseer" },
+        { "<leader>oo",  require('overseer').run_task,                             desc = "Run" },
       })
 
       -- automatically open debug ui when debugging

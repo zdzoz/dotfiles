@@ -8,7 +8,11 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       local name = vim.api.nvim_buf_get_name(buf)
       if name:match("%[dap%-terminal%]") then
-        pcall(vim.api.nvim_buf_delete, buf, { force = true })
+        vim.api.nvim_buf_delete(buf, { force = true })
+      end
+
+      if name:match("Make$") then
+        vim.api.nvim_buf_delete(buf, { force = true })
       end
     end
   end,

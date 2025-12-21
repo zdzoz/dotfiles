@@ -35,7 +35,7 @@ export LANG=en_US.UTF-8
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-source $HOME/VulkanSDK/1.4.304.1/setup-env.sh; clear
+source $HOME/VulkanSDK/current/setup-env.sh; clear
 
 export BAT_THEME="base16"
 

@@ -91,7 +91,20 @@ return {
       wk.add({
         { '<leader>ss', require("auto-session").search,                desc = 'Session' },
         { '<leader>sn', '<cmd>silent !tmux neww tmux-sessionizer<cr>', desc = 'New Session' },
-        { '<leader>M',  '<cmd>silent make<cr>',                        desc = 'Make' },
+        -- { '<leader>m',  '<cmd>silent make<cr>',                        desc = 'Make' },
+        {
+          '<leader>m',
+          function()
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+              if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_name(buf):match("Make$") then
+                vim.api.nvim_buf_delete(buf, { force = true })
+              end
+            end
+            vim.cmd([[tab term ]] .. vim.g.Session_mkprg)
+            vim.cmd('file Make')
+          end,
+          desc = 'Make'
+        },
         {
           '<leader>cm',
           function()
