@@ -96,9 +96,9 @@ return {
           local name = vim.api.nvim_buf_get_name(buf)
 
           if name:match("premake5%.lua$") then
-            table.insert(new_config.settings.Lua.workspace.library, vim.fs.joinpath(vim.fn.stdpath("config"), "premake5-definitions.lua"))
+            table.insert(new_config.settings.Lua.workspace.library,
+              vim.fs.joinpath(vim.fn.stdpath("config"), "premake5-definitions.lua"))
           end
-
         end,
         settings = {
           Lua = {},
@@ -178,7 +178,11 @@ return {
           end
 
           if vim.lsp.inlay_hint then
-            vim.keymap.set('n', '<leader>ch', function() vim.lsp.inlay_hint(0, nil) end, { desc = 'Toggle inlay hints' })
+            vim.lsp.inlay_hint.enable(true)
+
+            vim.keymap.set('n', '<leader>ch',
+              function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
+              { desc = 'Toggle inlay hints' })
           end
         end,
       })
