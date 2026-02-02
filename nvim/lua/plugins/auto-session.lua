@@ -102,6 +102,7 @@ return {
             end
             vim.cmd([[tab term ]] .. vim.g.Session_mkprg)
             vim.cmd('file Make')
+            vim.cmd([[call feedkeys("G")]])
           end,
           desc = 'Make'
         },
