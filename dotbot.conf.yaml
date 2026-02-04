@@ -3,24 +3,18 @@
 ]
 
 - link:
-    ~/.aerospace.toml: aerospace.toml
     ~/.config/ghostty: ghostty
     ~/.config/ideavim: ideavim
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
     ~/.gitconfig: gitconfig
-    ~/.gitconfig-work: gitconfig-work
     ~/.tmux: tmux
     ~/.tmux.conf: tmux.conf
-    ~/.zshrc: zshrc
-    ~/.zsh_plugins.txt: zsh_plugins.txt
     /usr/local/bin/tmux-sessionizer: scripts/tmux-sessionizer
 
 - create:
     - ~/.config
     - ~/dev
-    - ~/Documents
-    - ~/Documents/Work
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
