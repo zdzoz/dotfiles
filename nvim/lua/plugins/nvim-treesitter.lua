@@ -1,6 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     build = ':TSUpdate',
     dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     config = function()
@@ -8,9 +9,7 @@ return {
       configs.setup({
         ensure_installed = {
           'lua', 'vim', 'vimdoc', 'query',
-          'c', 'cpp', 'cmake', 'glsl',
-          'javascript', 'html',
-          'python',
+          'c', 'cpp', 'cmake', 'python',
         },
         sync_install = false,
         highlight = { enable = true },
