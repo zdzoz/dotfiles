@@ -3,6 +3,7 @@
 ]
 
 - link:
+    ~/.config/fish: fish
     ~/.config/ghostty: ghostty
     ~/.config/ideavim: ideavim
     ~/.config/lazygit: lazygit

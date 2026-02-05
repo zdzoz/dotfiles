@@ -1,16 +1,16 @@
 if [[ $(uname) == "Darwin" ]]; then
-  if [ "$(arch)" = "i386" ]; then
-      eval "$(/usr/local/bin/brew shellenv)"
-  else
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-  fi
+  # macos
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+else
+  # linux
 fi
+exit
 
 ################################################################################
 # Plugins
 ################################################################################
 
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
 ################################################################################
@@ -20,8 +20,8 @@ antidote load
 # start tmux and attach to any detached session
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$VSCODE_RESOLVING_ENVIRONMENT" ]; then
   if tmux has-session -t main 2>/dev/null && tmux ls | grep main | grep -q attached; then
-      # create new session
-      exec tmux
+    # create new session
+    exec tmux
   else
     # create or attach
     exec tmux new -As main
@@ -52,11 +52,9 @@ alias v="nvim"
 alias cat="bat"
 alias tms="tmux-sessionizer"
 alias leaks="MallocStackLogging=1 leaks"
-alias lz="lazygit"
+alias lg="lazygit"
 
-alias proj="cd ~/Documents/Projects"
-alias work="cd ~/Documents/Work"
-alias school="cd ~/Documents/School"
+alias dev="cd ~/dev"
 
 # tabtab source for packages
 # uninstall by removing these lines
